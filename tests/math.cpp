@@ -4,6 +4,6 @@
 
 TEST_CASE("math functions")
 {
-    CHECK(libcpp::add(1,2) == 3);
+    CHECK(ft::add(1,2) == 3);
     
 }

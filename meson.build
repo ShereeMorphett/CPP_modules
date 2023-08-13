@@ -1,5 +1,5 @@
 project(
-    'libcpp', #name
+    'libft_cpp', #name
     'cpp', #language
     meson_version: '>=1.0.0',
     default_options : [ 'b_ndebug=if-release', 'buildtype=debug']

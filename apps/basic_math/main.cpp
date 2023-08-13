@@ -1,8 +1,8 @@
-#include <libcpp/libcpp.hpp>
+#include <ft/ft.hpp>
 
 int main()
 {
-    libcpp::hello_world();
+    ft::hello_world();
 
     return 0;
 }

@@ -1,5 +1,5 @@
 
-test_dependencies = [ libcpp_dep]
+test_dependencies = [ ft_dep]
 test_dependencies += subproject('catch2').get_variable('catch2_with_main_dep')
 
 test_args = []

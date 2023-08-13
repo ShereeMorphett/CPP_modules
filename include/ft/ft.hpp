@@ -1,6 +1,6 @@
  //do not allow this into submission repo
  
-namespace libcpp
+namespace ft
 {
     void hello_world();
 

@@ -1,10 +1,10 @@
-libcpp_lib= library(
+ft_lib= library(
     meson.project_name(),
-    files('libcpp.cpp'),
+    files('libft_cpp.cpp'),
     include_directories: include_dir
 )
 
-libcpp_dep= declare_dependency(    
-    link_with: libcpp_lib,
+ft_dep= declare_dependency(    
+    link_with: ft_lib,
     include_directories: include_dir
 ) 

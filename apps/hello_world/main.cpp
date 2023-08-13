@@ -1,8 +1,8 @@
-#include <libcpp/libcpp.hpp>
+#include <ft/ft.hpp>
 
 int main()
 {
-    libcpp::add(1, 2);
+    ft::add(1, 2);
 
     return 0;
 }
