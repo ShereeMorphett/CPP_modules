@@ -11,3 +11,5 @@ requirments:
 meson setup builddir
 
 in the root directory 
+
+/Users/smorphet/Library/Python/3.9/bin

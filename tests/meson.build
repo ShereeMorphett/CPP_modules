@@ -10,7 +10,7 @@ test_link_args = []
 test_overrides = [ 'warning_level=3']
 
 test_source_files = []
-test_source_files += files('math.cpp') # is a magic thing that checks if files in array exist, returns an array
+test_source_files += files('math.cpp', 'string.cpp') # is a magic thing that checks if files in array exist, returns an array
 
 test_exe = executable(
     meson.project_name() + '_tests',

@@ -1,8 +1,8 @@
-#include <ft/ft.hpp>
+#include "../../include/ft/ft.hpp"
 
 int main()
 {
-    ft::add(1, 2);
+    ft::hello_world();
 
     return 0;
 }

@@ -1,3 +1,5 @@
 /subprojects/**/
 /build*/
 .DS_Store
+.json
+.gch
