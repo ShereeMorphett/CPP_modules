@@ -14,8 +14,8 @@ class Contact {
 	public:
 		Contact();
 		~Contact();
-		void			setAttributes();
 		void			printAttributes();
+		void			setAttributes();
 		std::string		getFirstName();
 		std::string		getLastName();
 		std::string		getPhoneNumber();

@@ -2,10 +2,12 @@
 #include <iostream>
 
 
+
+
 int main(int argc, char *argv[])
 {
     std::string str;
-	std::string::iterator it;
+	
 
 	if (argc == 1)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;

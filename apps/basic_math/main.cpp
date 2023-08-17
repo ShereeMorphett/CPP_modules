@@ -1,4 +1,4 @@
-#include "../../include/ft/ft.hpp"
+#include "ft/ft.hpp"
 
 int main()
 {

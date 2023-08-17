@@ -5,16 +5,16 @@
 # include <iostream>
 
 
-class PhoneBook
+class Phonebook
 {
 	private:
-		Contact	objects[8];
-		int		size;
-		int		index;
+		Contact	contacts[8];
 	public:
-		PhoneBook(void);
-		~PhoneBook(void);
-		void	print_contacts(void);
+		int		size;
+		Phonebook(void);
+		~Phonebook(void);
+		void	printContacts();
+		void	addContacts()
 };
 
 #endif
