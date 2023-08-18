@@ -26,24 +26,39 @@ int main()
 {
 	std::string input;
 	Phonebook data;
-
-
-	data.size = 1;
+	data.size = 0;
 	print_phonebook_startup();
-	
-	std::getline(std::cin, input);
+	std::cout << "\033[1;36m\nADD/SEARCH/EXIT: \033[0m";
+	std::cin >> input;
+	std::cin.clear();
+	std::cin.ignore(INT_MAX,'\n'); 
 	while (input != "EXIT")
 	{
 		if (input == "ADD")
 		{
-			std::cout << input << "\n";
-			data.contacts[data.size - 1].getFirstName();
+			if (data.size >= 8)
+			{
+				std::cout << "\033[1;33m Warning: You are about to overwrite contacts at index: " << "insert index being over written here" << "confirm: Y/N\033[0m";
+				std::cin >> input;
+				if (input == "Y")
+					data.addContacts();
+				std::cin.clear();
+				std::cin.ignore(INT_MAX,'\n');
+			}
+			else
+			{
+				data.size += 1;
+				data.addContacts();
+			}
 		}
 		else if (input == "SEARCH")
 		{
 			data.printContacts();
 		}
-		std::getline(std::cin, input);
+		std::cout << "\033[1;36m\nADD/SEARCH/EXIT: \033[0m";
+		std::cin >> input;
+		std::cin.clear();
+		std::cin.ignore(INT_MAX,'\n'); 
 	}
     return 0;
 }

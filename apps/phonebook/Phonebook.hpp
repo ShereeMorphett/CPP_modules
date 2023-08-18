@@ -14,7 +14,7 @@ class Phonebook
 		Phonebook(void);
 		~Phonebook(void);
 		void	printContacts();
-		void	addContacts()
+		void	addContacts();
 };
 
 #endif

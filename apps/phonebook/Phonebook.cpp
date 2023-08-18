@@ -6,9 +6,10 @@
 #include <iomanip>
 
 
-void			addContacts()
+void			Phonebook::addContacts()
 {
-	 
+	contacts[0].setAttributes();
+	contacts[0].printAttributes();
 	return ;
 }
 
@@ -26,7 +27,7 @@ void	Phonebook::printContacts()
 
     for (int i = 0; i < Phonebook::size - 1; ++i)
 	{  
-		contacts[i].printAttributes();
+		contacts[0].printAttributes();
     }
 
     std::cout << "\033[1;36m\n---------------------------------------------\033[0m" << '\n';

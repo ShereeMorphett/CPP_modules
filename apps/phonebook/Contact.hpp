@@ -8,7 +8,8 @@ class Contact {
 	private:
 		std::string	first_name;
 		std::string	last_name;
-		std::string	number;
+		std::string	nickname;
+		std::string	phone_number;
 		std::string	secret;
 
 	public:
@@ -16,10 +17,8 @@ class Contact {
 		~Contact();
 		void			printAttributes();
 		void			setAttributes();
-		std::string		getFirstName();
-		std::string		getLastName();
+		std::string		getInput(std::string prompt);
 		std::string		getPhoneNumber();
-		std::string		getSecret();
 };
 
 #endif

@@ -8,4 +8,6 @@ namespace ft
     int add(int a, int b);
 	/// used for megaphone
 	std::string print_string_uppercase(std::string str);
+	/// used for phonebook
+	bool is_valid_phonenumber(std::string str);
 }

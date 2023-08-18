@@ -11,3 +11,17 @@ std::string ft::print_string_uppercase(std::string str)
 	}
 	return upper;
 }
+
+bool ft::is_valid_phonenumber(std::string str)
+{
+	std::string::iterator it;
+
+	for (it = str.begin(); it != str.end(); it++) 
+	{
+		if(isdigit(*it) == true)
+			continue ;
+		else
+			return false;
+	}
+	return true;
+}
