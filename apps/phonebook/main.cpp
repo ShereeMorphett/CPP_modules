@@ -1,9 +1,11 @@
 #include "ft/ft.hpp"
 #include <iostream>
+#include <iomanip>
+#include <limits>
 #include "Phonebook.hpp"
 
 
-void print_phonebook_startup(void)
+static void printPhonebookStartup()
 {
 	std::cout << R"(
 	______ _                      _                 _    
@@ -26,39 +28,37 @@ int main()
 {
 	std::string input;
 	Phonebook data;
-	data.size = 0;
-	print_phonebook_startup();
+	printPhonebookStartup();
 	std::cout << "\033[1;36m\nADD/SEARCH/EXIT: \033[0m";
 	std::cin >> input;
 	std::cin.clear();
-	std::cin.ignore(INT_MAX,'\n'); 
+
 	while (input != "EXIT")
 	{
 		if (input == "ADD")
 		{
-			if (data.size >= 8)
+			if (data.getSize() >= 8)
 			{
 				std::cout << "\033[1;33m Warning: You are about to overwrite contacts at index: " << "insert index being over written here" << "confirm: Y/N\033[0m";
 				std::cin >> input;
 				if (input == "Y")
-					data.addContacts();
+					data.addContact();
 				std::cin.clear();
-				std::cin.ignore(INT_MAX,'\n');
 			}
 			else
-			{
-				data.size += 1;
-				data.addContacts();
-			}
+				data.addContact();
 		}
 		else if (input == "SEARCH")
 		{
-			data.printContacts();
+			std::cout << data;
+			std::cout << "\033[1;36m\nSELECT INDEX: \033[0m";
+			int index;
+			std::cin >> index;
+			data.printContact(std::cout, index - 1);
 		}
 		std::cout << "\033[1;36m\nADD/SEARCH/EXIT: \033[0m";
 		std::cin >> input;
-		std::cin.clear();
-		std::cin.ignore(INT_MAX,'\n'); 
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	}
     return 0;
 }

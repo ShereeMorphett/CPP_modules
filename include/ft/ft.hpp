@@ -10,4 +10,5 @@ namespace ft
 	std::string print_string_uppercase(std::string str);
 	/// used for phonebook
 	bool is_valid_phonenumber(std::string str);
+	std::string		trim_ws(std::string input);
 }

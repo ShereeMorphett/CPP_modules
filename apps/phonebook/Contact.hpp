@@ -5,20 +5,17 @@
 
 class Contact {
 
-	private:
-		std::string	first_name;
-		std::string	last_name;
-		std::string	nickname;
-		std::string	phone_number;
-		std::string	secret;
-
 	public:
-		Contact();
-		~Contact();
-		void			printAttributes();
-		void			setAttributes();
+		std::string		firstName;
+		std::string		lastName;
+		std::string		nickname;
+		std::string		phoneNumber;
+		std::string		secret;
+		void			setAttributes(int size);
 		std::string		getInput(std::string prompt);
 		std::string		getPhoneNumber();
 };
+
+std::ostream& operator <<(std::ostream&, const Contact&);
 
 #endif
