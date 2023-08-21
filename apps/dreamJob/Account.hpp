@@ -18,6 +18,9 @@
 
 class Account {
 public:
+//static in a class means its shared with all instances of a class
+//scope operator when outside of class namespace, not the dots
+
 
 	typedef Account		t;
 
@@ -48,6 +51,7 @@ private:
 	int				_amount;
 	int				_nbDeposits;
 	int				_nbWithdrawals;
+	//these are instance variables, and it cant be static
 
 	Account( void );
 

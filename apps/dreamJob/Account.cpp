@@ -8,13 +8,12 @@
 #include <iostream>
 #include <sstream>
 
-static void	_displayTimestamp( void )
+void	Account::_displayTimestamp( void )
 {
     auto currentTime = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
     std::tm timeInfo;
     localtime_r(&currentTime, &timeInfo); 
-	std::ostringstream timestampStream;
-    timestampStream << "["
+    std::cout << "["
                     << std::setw(4) << std::setfill('0') << timeInfo.tm_year + 1900
                     << std::setw(2) << std::setfill('0') << timeInfo.tm_mon + 1
                     << std::setw(2) << std::setfill('0') << timeInfo.tm_mday
@@ -25,59 +24,83 @@ static void	_displayTimestamp( void )
                     << "] ";
 }
 
-static int getNbAccounts()
+void	Account::displayAccountsInfos( void )
 {
-		return _NbAccounts;
+	_displayTimestamp();
+	//more information printed
+
 }
 
-static int	getTotalAmount( void )
+int	Account::getNbAccounts( void )
+{
+	return _nbAccounts;
+}
+
+int	Account::getTotalAmount( void )
 {
 	return _totalAmount;
 }
 
-static int	getNbDeposits( void )
+int Account::getNbDeposits( void )
 {
-	return _NbDeposits;
+	/*
+		return this->total amount, for non-static member arguement void, super magic this. 
+		static int	getTotalAmount( void );
+		(pointer to the class)?????? WHAT AM I EVEN DOING HERE?
+	*/
+	return 	_totalNbWithdrawals;
 }
-static int	getNbWithdrawals( void )
+
+int	Account::getNbWithdrawals( void )
 {
-	return _Nbwitdrawals;
+	return 	_totalNbDeposits;
 }
+
+
 void	Account::displayStatus( void ) const
 {
 	_displayTimestamp();
-	int nbAccounts = getNbAccounts();
-	int total = getTotalAmount();
-	int withdrawals = getNbWithdrawals;
-	int Deposits = getNbDeposits;
+	std::cout << "accounts:" << _nbAccounts <<';';
+	std::cout << "total:" << _totalAmount <<';';
+	std::cout << "deposits:" << _totalNbDeposits <<';';
+	std::cout << "withdrawals:" << _totalNbWithdrawals <<';' << std::endl;
 }
 	
-void	makeDeposit( int deposit )
+void	Account::makeDeposit( int deposit )
 {
 	_amount += deposit;
 	_nbDeposits += 1;
-
 }
 
-bool	makeWithdrawal( int withdrawal )
+bool	Account::makeWithdrawal( int withdrawal )
 {
-
 	if (checkAmount() >= withdrawal)
+	{
+		_amount -= withdrawal;
+		_nbWithdrawals += 1;
+		_totalNbWithdrawals += 1;
 		return true;
+	}
 	else
+	{
+		_displayTimestamp();
+		std::cout << std::setw(2) << std::setfill('0') << " " << _accountIndex << _amount << "withdrawal:refused";
 		return false;
-
+	}
 }
 
 int		Account::checkAmount() const
 {
 	return _amount;
 }
-// void	displayStatus( void ) const;
+
 
 Account::Account(int initial_deposit)
 {
 	_amount = initial_deposit;
+	_accountIndex = Account::getNbAccounts();
+	_nbDeposits = 0;
+	_nbWithdrawals = 0;
 }
 
 
