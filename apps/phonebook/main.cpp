@@ -5,7 +5,7 @@
 #include "Phonebook.hpp"
 
 
-static void printPhonebookStartup()
+static void PrintPhonebookStartup()
 {
 	std::cout << R"(
 	______ _                      _                 _    
@@ -28,7 +28,7 @@ int main()
 {
 	std::string input;
 	Phonebook data;
-	printPhonebookStartup();
+	PrintPhonebookStartup();
 	std::cout << "\033[1;36m\nADD/SEARCH/EXIT: \033[0m";
 	std::cin >> input;
 	std::cin.clear();
@@ -36,25 +36,14 @@ int main()
 	while (input != "EXIT")
 	{
 		if (input == "ADD")
-		{
-			if (data.getSize() >= 8)
-			{
-				std::cout << "\033[1;33m Warning: You are about to overwrite contacts at index: " << "insert index being over written here" << "confirm: Y/N\033[0m";
-				std::cin >> input;
-				if (input == "Y")
-					data.addContact();
-				std::cin.clear();
-			}
-			else
-				data.addContact();
-		}
+				data.AddContact();
 		else if (input == "SEARCH")
 		{
 			std::cout << data;
 			std::cout << "\033[1;36m\nSELECT INDEX: \033[0m";
 			int index;
 			std::cin >> index;
-			data.printContact(std::cout, index - 1);
+			data.PrintContact(std::cout, index - 1);
 		}
 		std::cout << "\033[1;36m\nADD/SEARCH/EXIT: \033[0m";
 		std::cin >> input;

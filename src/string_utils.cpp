@@ -1,8 +1,7 @@
 #include "../include/ft/ft.hpp"
 
-//io manipulation: 
 
-std::string		ft::trim_ws(std::string input)
+std::string		ft::TrimWs(std::string input)
 {
 	int start = 0;
     int end = input.length();
@@ -16,19 +15,8 @@ std::string		ft::trim_ws(std::string input)
 }
 
 
-std::string ft::print_string_uppercase(std::string str)
-{
-	std::string upper;
-	std::string::iterator it;
 
-	for (it = str.begin(); it != str.end(); it++) 
-	{
-		upper += toupper(*it);
-	}
-	return upper;
-}
-
-bool ft::is_valid_phonenumber(std::string str)
+bool ft::isValidPhonenumber(std::string str)
 {
 	std::string::iterator it;
 

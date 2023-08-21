@@ -8,14 +8,14 @@
 class Phonebook
 {
 	private:
-		Contact	contacts[8]; //template class, container
+		Contact	contacts[8]; 
 		int		size;
 	public:
 		Phonebook();
-		const	Contact*	getContacts() const;//inside the function only reads the class
-		int					getSize() const;
-		void				addContact();
-		void				printContact(std::ostream& os, int index);
+		const	Contact*	GetContacts() const;//inside the function only reads the class therefore contacts behaves private
+		int					GetSize() const;
+		void				AddContact();
+		void				PrintContact(std::ostream& os, int index);
 };
 
 std::ostream& operator <<(std::ostream&, const Phonebook&);

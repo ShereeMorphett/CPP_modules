@@ -6,20 +6,36 @@
 #include <iomanip>
 
 
-const	Contact* Phonebook::getContacts() const
+const	Contact* Phonebook::GetContacts() const
 {
     return contacts;
 }
 	
-int     Phonebook::getSize() const
+int     Phonebook::GetSize() const
 {
     return size;
 }
 
-void			Phonebook::addContact()
+void			Phonebook::AddContact()
 {
-	contacts[size].setAttributes(size);
-    size += 1;
+		if (size >= 8)
+	{
+		std::string	input;
+		std::cout << "\033[1;33m Warning: You are about to overwrite contacts at index: " << size % 8 + 1 << "	confirm(Y/N):	\033[0m";
+		std::cin >> input;
+		if (input == "Y")
+		{
+			std::cin.clear();
+			contacts[size % 8].SetAttributes(size % 8);
+			size += 1;
+		}
+		std::cin.clear();
+	}
+	else
+	{
+		contacts[size].SetAttributes(size);
+		size += 1;
+	}
 }
 static void print_right_alligned(std::ostream& os, const std::string &str ,int len)
 {
@@ -30,28 +46,26 @@ static void print_right_alligned(std::ostream& os, const std::string &str ,int l
             os << std::setw(10) << std::right << str;
 }
 
-void    Phonebook::printContact(std::ostream& os, int index)
+void    Phonebook::PrintContact(std::ostream& os, int index)
 {
-    os << "\033[4;36mFirst Name:\033[0m\n" << contacts[index].firstName << std::endl;
-    os << "\033[4;36mLast Name:\033[0m\n" << contacts[index].lastName << std::endl;
-    os << "\033[4;36mNickname:\033[0m\n" << contacts[index].nickname << std::endl;
-    os << "\033[4;36mPhone number:\033[0m\n" << contacts[index].phoneNumber << std::endl;
-    os << "\033[4;36mDarkest Secret:\033[0m\n"<< contacts[index].secret << std::endl;
+    os << "\033[4;36mFirst Name:\033[0m\n" << contacts[index].FirstName << std::endl;
+    os << "\033[4;36mLast Name:\033[0m\n" << contacts[index].LastName << std::endl;
+    os << "\033[4;36mNickname:\033[0m\n" << contacts[index].Nickname << std::endl;
+    os << "\033[4;36mPhone number:\033[0m\n" << contacts[index].PhoneNumber << std::endl;
+    os << "\033[4;36mDarkest Secret:\033[0m\n"<< contacts[index].Secret << std::endl;
 }
 
-
-
-static void printContactSummary(std::ostream& os, const Contact& contact, int index)
+static void PrintContactSummary(std::ostream& os, const Contact& contact, int index)
 {
     std::string attribute;
 
     os << "\033[1;36m|\033[0m" << std::setw(10) << std::right << index + 1;
     os << "\033[1;36m|\033[0m";
-    print_right_alligned(os, contact.firstName, 10);
+    print_right_alligned(os, contact.FirstName, 10);
     os << "\033[1;36m|\033[0m";
-    print_right_alligned(os, contact.lastName, 10);
+    print_right_alligned(os, contact.LastName, 10);
     os << "\033[1;36m|\033[0m";
-    print_right_alligned(os, contact.nickname, 10);
+    print_right_alligned(os, contact.Nickname, 10);
     os << "\033[1;36m|\033[0m" << "\n";
     return;
 }
@@ -66,18 +80,21 @@ std::ostream& operator <<(std::ostream& os, const Phonebook& phonebook)
     os  << "\033[1;36m|\033[0m" << '\n';
     os  << "\033[1;36m---------------------------------------------\033[0m" << '\n';
 
-    for (int i = 0; i < phonebook.getSize(); ++i)
-    {  
-        printContactSummary(os, phonebook.getContacts()[i], i);
-    }
-
+	int i = 0;
+	int size = phonebook.GetSize();
+	if (size > 8)
+		size = 8;
+	while (i < size)
+	{
+        PrintContactSummary(os, phonebook.GetContacts()[i], i);
+		i++;
+	}
     os << "\033[1;36m\n---------------------------------------------\033[0m" << '\n';
     return os;
 }
 
 Phonebook::Phonebook()
 {
-	// std::cout << "Phonebook Constructor called" << '\n';
     size = 0;
 	return ;
 };

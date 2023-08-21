@@ -7,8 +7,8 @@ namespace ft
     void hello_world();
     int add(int a, int b);
 	/// used for megaphone
-	std::string print_string_uppercase(std::string str);
+
 	/// used for phonebook
-	bool is_valid_phonenumber(std::string str);
-	std::string		trim_ws(std::string input);
+	bool isValidPhonenumber(std::string str);
+	std::string		TrimWs(std::string input);
 }

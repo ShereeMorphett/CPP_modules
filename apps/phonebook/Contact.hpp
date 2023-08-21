@@ -6,14 +6,14 @@
 class Contact {
 
 	public:
-		std::string		firstName;
-		std::string		lastName;
-		std::string		nickname;
-		std::string		phoneNumber;
-		std::string		secret;
-		void			setAttributes(int size);
-		std::string		getInput(std::string prompt);
-		std::string		getPhoneNumber();
+		std::string		FirstName;
+		std::string		LastName;
+		std::string		Nickname;
+		std::string		PhoneNumber;
+		std::string		Secret;
+		void			SetAttributes(int size);
+		std::string		GetInput(std::string prompt);
+		std::string		GetPhoneNumber();
 };
 
 std::ostream& operator <<(std::ostream&, const Contact&);

@@ -2,6 +2,17 @@
 #include <iostream>
 
 
+static	std::string PrintStringUppercase(std::string str)
+{
+	std::string upper;
+	std::string::iterator it;
+
+	for (it = str.begin(); it != str.end(); it++) 
+	{
+		upper += toupper(*it);
+	}
+	return upper;
+}
 
 
 int main(int argc, char *argv[])
@@ -15,7 +26,7 @@ int main(int argc, char *argv[])
 	{
 		for(int i = 1; i < argc; i++)
 		{
-			str = ft::print_string_uppercase(argv[i]);
+			str = PrintStringUppercase(argv[i]);
 			std::cout << str;
 		}
 		std::cout << std::endl;

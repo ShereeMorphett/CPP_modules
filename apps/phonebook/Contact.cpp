@@ -4,41 +4,41 @@
 #include <iomanip>
 #include <limits>
 
-std::string		Contact::getInput(std::string prompt)
+std::string		Contact::GetInput(std::string prompt)
 {
 	std::string	input;
 
 	std::cout << "\033[1;36m" << prompt <<  "\033[0m";
 	std::cin >> input;
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	input = ft::trim_ws(input);
+	input = ft::TrimWs(input);
 	return input;
 }
 
 
-std::string		Contact::getPhoneNumber()
+std::string		Contact::GetPhoneNumber()
 {
 	std::string	input;
 
 	std::cout << "\033[1;36mPhone Number: \033[0m";
 	std::cin >> input;
 
-	if (ft::is_valid_phonenumber(input) == false)
+	if (ft::isValidPhonenumber(input) == false)
 	{
 		std::cout << "\033[1;33mInvalid phone number: Input must only contain numbers\033[0m" << std::endl;
-		input = getPhoneNumber();
+		input = GetPhoneNumber();
 	}
 
 	std::cin.clear();
 	return input;
 }
 
-void	Contact::setAttributes(int size)
+void	Contact::SetAttributes(int size)
 {
-	firstName = getInput("First Name: ");
-	lastName = getInput("Last Name: ");
-	nickname = getInput("Nickname: ");
-	phoneNumber = getPhoneNumber();
-	secret = getInput("Darkest Secret: ");
+	FirstName = GetInput("First Name: ");
+	LastName = GetInput("Last Name: ");
+	Nickname = GetInput("Nickname: ");
+	PhoneNumber = GetPhoneNumber();
+	Secret = GetInput("Darkest Secret: ");
 
 }
