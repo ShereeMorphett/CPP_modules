@@ -16,7 +16,6 @@
 int		main( void ) {
 
 	typedef std::vector<Account::t>							  accounts_t;
-	Account::displayAccountsInfos();
 	typedef std::vector<int>								  ints_t;
 	typedef std::pair<accounts_t::iterator, ints_t::iterator> acc_int_t;
 
@@ -48,6 +47,7 @@ int		main( void ) {
 		(*(it.first)).makeDeposit( *(it.second) );
 	}
 
+	Account::displayAccountsInfos();
 	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 
 	for ( acc_int_t it( acc_begin, wit_begin );

@@ -51,7 +51,7 @@ private:
 	int				_amount;
 	int				_nbDeposits;
 	int				_nbWithdrawals;
-	//these are instance variables, and it cant be static
+
 
 	Account( void );
 
