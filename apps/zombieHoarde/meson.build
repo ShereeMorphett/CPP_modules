@@ -1,5 +1,5 @@
 app_exes += executable(
-    'brainzz',
-    files('main.cpp', 'Zombie.cpp', 'newZombie.cpp'),
+    'zombieHoarde',
+    files('main.cpp', 'Zombie.cpp', 'zombieHoarde.cpp'),
     dependencies: [ft_dep]
 )

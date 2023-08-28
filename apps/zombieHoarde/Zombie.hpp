@@ -14,12 +14,12 @@ class Zombie
 
 	public:
 		void announce( void );
-		Zombie(std::string identify);
+		Zombie(void);
 		~Zombie();
+	void	nameObject(std::string name);
 };
 
-Zombie* newZombie( std::string name );
-void randomChump( std::string name );
+Zombie*	zombieHorde(int size, std::string name);
 
 
 

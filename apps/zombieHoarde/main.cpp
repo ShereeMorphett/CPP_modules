@@ -1,19 +1,14 @@
 #include "Zombie.hpp"
 
 
-
-int main(int argc, char *argv[])
+int	main(void)
 {
-	
-	Zombie	thing("sally");
-	thing.announce();
-	
-	Zombie *newbie = newZombie("NewDude");
-	newbie->announce();
-	
-	randomChump("spaghetti");
+	int	size;
 
-	delete newbie;
+	size = 20;
+	Zombie *horde = zombieHorde(size, "Sally");
+	for (int index = 0; index < size; index++)
+		horde[index].announce();
+	delete [] horde; //deletes full array and anything in it
 
-    return 0;
-} 
+}

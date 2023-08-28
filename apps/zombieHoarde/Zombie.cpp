@@ -7,10 +7,18 @@ void Zombie::announce( void )
 	std::cout << "BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-Zombie::Zombie(std::string identify)
+
+void	Zombie::nameObject(std::string identify)
 {
 	name = identify;
 }
+
+
+Zombie::Zombie(void)
+{
+	std::cout << "Hoarde size increases (constructor call)" << std::endl;
+}
+
 
 Zombie::~Zombie()
 {
