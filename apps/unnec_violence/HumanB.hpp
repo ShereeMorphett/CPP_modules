@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 11:26:35 by smorphet          #+#    #+#             */
-/*   Updated: 2023/08/29 15:04:29 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/08/29 19:59:44 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,13 @@ class HumanB
 {
 	private:
 		std::string name;
-		Weapon weapon;
+		Weapon *weapon;
 		
 	public:
 	
 	HumanB(std::string id);
-	~HumanB();
-	void attack();
-	void setWeapon(Weapon weaponType);
+	void attack(void);
+	void setWeapon(Weapon &weaponType);
 };
 
 
