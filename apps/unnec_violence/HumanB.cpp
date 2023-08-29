@@ -1,38 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/29 10:21:27 by smorphet          #+#    #+#             */
-/*   Updated: 2023/08/29 10:21:30 by smorphet         ###   ########.fr       */
+/*   Created: 2023/08/29 11:26:38 by smorphet          #+#    #+#             */
+/*   Updated: 2023/08/29 15:24:24 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
-#include "Zombie.hpp"
+# include "HumanB.hpp"
 
-void Zombie::announce( void )
-{
-	std::cout << "\e[1;32m" << name  << ": " << "\e[0m";
-	std::cout << "BraiiiiiiinnnzzzZ..." << std::endl;
+
+void HumanB::setWeapon(Weapon weaponType)
+{	
+	weapon = weaponType;
 }
 
 
-void	Zombie::nameObject(std::string identify)
+HumanB::HumanB(std::string id) : weapon("NULL")
 {
-	name = identify;
+	name = id;
 }
 
 
-Zombie::Zombie(void)
+HumanB::~HumanB()
 {
-	std::cout << "Hoarde size increases (constructor call)" << std::endl;
+	std::cout << name << " has been destroyed" << std::endl;
 }
 
 
-Zombie::~Zombie()
+void HumanB::attack()
 {
-	std::cout << name << " has been destroyed" << std::endl; 
+	if (weapon.getType() != "NULL")
+		std::cout << name << " attacks with their "<< weapon.getType() << std::endl;
+	else
+		std::cout << name << " has no weapon" << std::endl;
 }
+
