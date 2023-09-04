@@ -9,5 +9,6 @@ subdir('zombieHoarde')
 subdir('this_is_brain')
 subdir('unnec_violence')
 subdir('sed_losers')
+subdir('Harl')
 
 #needed for every sub directory
