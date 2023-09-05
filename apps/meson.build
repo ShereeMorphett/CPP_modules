@@ -2,14 +2,8 @@ app_exes = []
 
 subdir('hello_world')
 subdir('basic_math') 
-subdir('megaphone') 
-subdir('phonebook')
-subdir('brainzz')
-subdir('zombieHoarde')
-subdir('this_is_brain')
-subdir('unnec_violence')
-subdir('sed_losers')
-subdir('Harl')
-subdir('harlFilter')
+subdir('ex00')
+subdir('ex01')
+subdir('ex02')
 
 #needed for every sub directory

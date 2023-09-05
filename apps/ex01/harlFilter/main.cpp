@@ -3,49 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:48:44 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/04 15:26:09 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/05 09:28:22 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
-
-/*switch (expression)  {
-    case constant1:
-        // code to be executed if 
-        // expression is equal to constant1;
-        break;
-
-    case constant2:
-        // code to be executed if
-        // expression is equal to constant2;
-        break;
-    default:
-        // code to be executed if
-        // expression doesn't match any constant
-}*/
-
-
-/*sometimes you don’t want to pay attention to everything Harl says. Implement a
-system to filter what Harl says depending on the log levels you want to listen to.
-Create a program that takes as parameter one of the four levels. It will display all
-messages from this level and above. For example:
-
-$> ./harlFilter "WARNING"
-[ WARNING ]
-I think I deserve to have some extra bacon for free.
-I've been coming for years whereas you started working here since last month.
-[ ERROR ]
-This is unacceptable, I want to speak to the manager now.
-$> ./harlFilter "I am not sure how tired I am today..."
-[ Probably complaining about insignificant problems ]
-Although there are several ways to deal with Harl, one of the most effective is to
-SWITCH it off.
-
-Give the name harlFilter to your executable.
-You must use, and maybe discover, the switch statement in this exercise.*/
 
 static int levelIndex(char *input)
 {

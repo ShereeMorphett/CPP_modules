@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 13:27:23 by smorphet          #+#    #+#             */
-/*   Updated: 2023/08/31 15:56:48 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/01 10:26:36 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,13 @@ own tests to ensure your program works as expected
 static std::string processInFile(char *fileName)
 {
 	std::ifstream	ogFile;
-	std::string 			ogFileCopy;
+	std::string		ogFileCopy;
 	char			ch;
 
 	ogFile.open(fileName);
 	
 	if (ogFile.fail())
-	{
-		std::cout << "Error opening file" << std::endl;
-		return (NULL);
-	}
-	
-	std::cout << ogFileCopy << std::endl; //
+		return ("");
 	
 	while(!ogFile.eof() && ogFile >> std::noskipws >> ch)
 		ogFileCopy += ch;
@@ -53,7 +48,7 @@ static std::string processInFile(char *fileName)
 }
 
 
-static  int createOutFile(const std::string& fileName, const std::string& replacedContent)
+static int createOutFile(const std::string& fileName, const std::string& replacedContent)
 {
     std::ofstream outFile;
     
@@ -88,7 +83,6 @@ static std::string replaceWords(const std::string& input, const std::string& toF
             pos = input.size();
         }
     }
-	
     return result;
 }
 
@@ -102,7 +96,7 @@ int main(int argc, char **argv)
     std::string ogFileCopy = processInFile(argv[1]);
 
     if (ogFileCopy.empty()) {
-        std::cout << "Error processing input file." << std::endl;
+        std::cout << "Error with the file: No input to process." << std::endl;
         return 1;
     }
 

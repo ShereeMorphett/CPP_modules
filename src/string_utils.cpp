@@ -15,7 +15,6 @@ std::string		ft::TrimWs(std::string input)
 }
 
 
-
 bool ft::isValidPhonenumber(std::string str)
 {
 	std::string::iterator it;
@@ -26,4 +25,31 @@ bool ft::isValidPhonenumber(std::string str)
 			return false;
 	}
 	return true;
+}
+
+
+std::string ft::replaceWords(const std::string& input, const std::string& toFind, const std::string& replacement)
+{
+
+    std::string result;
+
+    int pos = 0;
+    while (pos < input.size())
+	{
+		std::cout << "in input loop pos = " << pos << std::endl;
+        int foundPos = input.find(toFind, pos);
+        std::cout << "in input loop foundPos = " << foundPos << std::endl;
+		if (foundPos != std::string::npos)
+		{
+            result += input.substr(pos, foundPos - pos);
+            result += replacement;
+            pos = foundPos + toFind.size();
+        }
+		else
+		{
+            result += input.substr(pos);
+            pos = input.size();
+        }
+    }
+    return result;
 }
