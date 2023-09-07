@@ -1,6 +1,13 @@
 #include "../include/ft/ft.hpp"
 
 
+
+void ft::hello_world()
+{
+    std::cout << "Hello, World!\n";
+    
+}
+
 std::string		ft::TrimWs(std::string input)
 {
 	int start = 0;
