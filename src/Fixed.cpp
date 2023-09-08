@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:29:09 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/08 18:03:00 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/08 19:43:48 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ by fractionalBits positions, effectively converting it into a fixed-point repres
 specific number of fractional bits.*/
 Fixed::Fixed(const int num)
 {
-    fixedPoint = num << fractionalBits;
+    setRawBits(num << fractionalBits);
 }
 
 /*initializes a fixed-point number `fixedPoint` 
@@ -89,8 +89,7 @@ representation with two decimal places.*/
 
 std::ostream& operator<<(std::ostream& out, const Fixed& fixed)
 {
-    float floatValue = static_cast<float>(fixed.getRawBits()) / (1 << Fixed::fractionalBits);
-    out << std::fixed << std::setprecision(2) << floatValue;
+   out << fixed.toFloat();  
     return out;
 }
 /*This assignment operator overloads the `=` operator to copy the raw fixed-point representation from 
@@ -109,8 +108,9 @@ returning the corresponding floating-point value.*/
 
 float Fixed::toFloat( void ) const
 {
-  float floatValue = static_cast<float>(getRawBits()) / (1 << fractionalBits);
-
+  float floatValue = (float)(getRawBits()) / (1 << fractionalBits);
+	std::cout << "after to float" << floatValue << std::endl;
+	
 	return (floatValue);
 }
 

@@ -1,6 +1,6 @@
 app_exes += executable(
     'ex01',
-    files('main.cpp', '../../../src/Fixed.cpp'),
+    files('main.cpp'),
     dependencies: [ft_dep]
 
 )

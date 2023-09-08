@@ -1,6 +1,6 @@
 ft_lib= library(
     meson.project_name(),
-    files('maths.cpp', 'string_utils.cpp'),
+    files('maths.cpp', 'string_utils.cpp', 'Fixed.cpp'),
     include_directories: include_dir
 )
 

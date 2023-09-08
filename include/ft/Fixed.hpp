@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 10:33:34 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/08 17:43:18 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/08 19:30:39 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ class Fixed
 
 		friend std::ostream& operator<<(std::ostream& out, const Fixed& fixed);
 
-		float toFloat() const;
-		int toInt() const;
+		float toFloat(void) const;
+		int toInt(void) const;
 		int getRawBits() const;
 		void setRawBits(int const rawValue);
 };
