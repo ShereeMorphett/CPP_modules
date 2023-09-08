@@ -1,5 +1,6 @@
 #include  <string.h> 
 #include <iostream>
+#include "Fixed.hpp"
  
 namespace ft
 {
@@ -11,11 +12,4 @@ namespace ft
 	std::string		TrimWs(std::string input);
 	//used for sed_is_for_losers
 	std::string replaceWords(const std::string& input, const std::string& toFind, const std::string& replacement);
-
-
-
-	
-
-
-
 }

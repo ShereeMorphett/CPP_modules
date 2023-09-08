@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 10:33:34 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/07 16:12:01 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/08 17:43:18 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,27 @@
 class Fixed
 {
 	private:
-	int fixedPoint;
-	static const int rawBit = 8;
+		int fixedPoint;
+		static const int fractionalBits = 8; // Initialize fractional bits to 8
 
 	public:
-	
-	Fixed();
-	Fixed(const int num);
-	Fixed(const float num);
-	Fixed(Fixed &c);
-	~Fixed();
-	
-	Fixed& operator=(Fixed const &self);
-	Fixed& operator<<(Fixed const &self);
+		Fixed();
+		Fixed(const int num);
+		Fixed(const float num);
+		Fixed(const Fixed& c);
+		~Fixed();
 
-	float toFloat( void ) const;
-	int toInt( void ) const;
-	int getRawBits(void) const;
-	void setRawBits(int const raw);
+		Fixed& operator=(Fixed const& self);
+
+		friend std::ostream& operator<<(std::ostream& out, const Fixed& fixed);
+
+		float toFloat() const;
+		int toInt() const;
+		int getRawBits() const;
+		void setRawBits(int const rawValue);
 };
+
+
 
 
 #endif
