@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:29:09 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/10 14:59:08 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/10 15:29:23 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ Fixed::Fixed()
 	fixedPoint = 0;
 }
 
-
 /*This constructor initializes a fixed-point number fixedPoint by left-shifting the integer num 
 by fractionalBits positions, effectively converting it into a fixed-point representation with a 
 specific number of fractional bits.*/
@@ -67,7 +66,7 @@ Fixed::Fixed(const float num)
 {
     fixedPoint = static_cast<int>(roundf(num * (1 << fractionalBits)));
 	/*math library function that rounds a floating-point number to the nearest integer value, 
-	using the round-half-to-even (or "banker's rounding") rule. In other words, 
+	using the round-half-to-even (or "banker's rounding") rule. In right words, 
 	it rounds to the nearest integer, and if the number is exactly halfway between two integers, 
 	it rounds to the nearest even integer.*/
 }
@@ -93,7 +92,7 @@ std::ostream& operator<<(std::ostream& out, const Fixed& fixed)
     return out;
 }
 /*This assignment operator overloads the `=` operator to copy the raw fixed-point representation from 
-another `Fixed` object (`self`) into the current object and 
+anright `Fixed` object (`self`) into the current object and 
 returns a reference to the modified object.*/
 
 Fixed& Fixed::operator=(Fixed const &self)
@@ -102,22 +101,103 @@ Fixed& Fixed::operator=(Fixed const &self)
 	return (*this);
 }
 
-//Fixed Fixed::operator+(const Fixed& self);
-// Fixed Fixed::operator-(const Fixed& self);
-// Fixed Fixed::operator*(const Fixed& self);
-// Fixed Fixed::operator/(const Fixed& self);
+Fixed Fixed::operator+(Fixed const &right)
+{
+	Fixed value(*this);
 
-// bool	Fixed::operator>(const Fixed& self);
-// bool	Fixed::operator<(const Fixed& self);
-// bool	Fixed::operator>=(const Fixed& self);
-// bool	Fixed::operator<=(const Fixed& self);
-// bool	Fixed::operator==(const Fixed& self);
-// bool	Fixed::operator!=(const Fixed& self);
+	value.setRawBits(this->getRawBits() + right.getRawBits());
+	return (value);
+}
 
-// Fixed&	Fixed::operator++( void );
-// Fixed	Fixed::operator++( int );
-// Fixed&	Fixed::operator--( void );
-// Fixed	Fixed::operator--( int );
+Fixed Fixed::operator-(Fixed const &right)
+{
+	Fixed value(*this);
+
+	value.setRawBits(this->getRawBits() - right.getRawBits());
+	return (value);
+}
+
+//must be longs and not ints, loses precision
+Fixed Fixed::operator*(Fixed const &right)
+{
+	Fixed leftValue(*this);
+	long temp1 = ((long)this->getRawBits());
+	long temp2 = ((long)right.getRawBits());
+	
+	leftValue.setRawBits((temp1 * temp2) / (1 << Fixed::fractionalBits));
+	return (leftValue);
+}
+
+Fixed Fixed::operator/(Fixed const &right)
+{
+	Fixed val(*this);
+	long tmp1, tmp2;
+
+	tmp1 = ((long)this->getRawBits());
+	tmp2 = ((long)right.getRawBits());
+	val.setRawBits((tmp1 * (1 << Fixed::fractionalBits)) / tmp2);
+	return (val);
+}
+
+bool Fixed::operator>(const Fixed& right)
+{
+    return (this->getRawBits() > right.getRawBits());
+}
+
+bool Fixed::operator<(const Fixed& right)
+{
+	return (this->getRawBits() < right.getRawBits());
+}
+
+bool Fixed::operator>=(const Fixed& right)
+{
+	return (this->getRawBits() >= right.getRawBits());
+}
+
+bool Fixed::operator<=(const Fixed& right)
+{
+	return (this->getRawBits() <= right.getRawBits());
+}
+
+bool Fixed::operator==(const Fixed& right)
+{
+	return (this->getRawBits() == right.getRawBits());
+}
+
+bool Fixed::operator!=(const Fixed& right)
+{
+	return (this->getRawBits() != right.getRawBits());
+}
+
+
+Fixed& Fixed::operator++(void)
+{
+	this->fixedPoint++;
+	return (*this);
+}
+
+
+Fixed Fixed::operator++(int)
+{
+	Fixed temp(*this);
+	operator++();
+	return (temp);
+}
+
+Fixed& Fixed::operator--()
+{
+	fixedPoint--;
+	return (*this);
+}
+
+Fixed Fixed::operator--(int)
+{
+	Fixed temp(*this);
+	operator--();
+	return (temp);
+}
+
+
 
 /*This member function converts the fixed-point number into a floating-point representation 
 by dividing the raw fixed-point bits by 2 raised to the power of `fractionalBits`, 
@@ -125,9 +205,7 @@ returning the corresponding floating-point value.*/
 
 float Fixed::toFloat( void ) const
 {
-  float floatValue = (float)(getRawBits()) / (1 << fractionalBits);
-	std::cout << "after to float" << floatValue << std::endl;
-	
+  	float floatValue = (float)(getRawBits()) / (1 << fractionalBits);
 	return (floatValue);
 }
 
