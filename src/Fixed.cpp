@@ -6,14 +6,12 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:29:09 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/10 15:36:04 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/10 15:37:16 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft/Fixed.hpp"
 #include <iomanip>
-
-
 /*
 Fixed Precision:
 	Fixed-point numbers have a fixed number of fractional and integer bits,
@@ -65,10 +63,6 @@ from a floating-point value.*/
 Fixed::Fixed(const float num)
 {
     fixedPoint = static_cast<int>(roundf(num * (1 << fractionalBits)));
-	/*math library function that rounds a floating-point number to the nearest integer value, 
-	using the round-half-to-even (or "banker's rounding") rule. In right words, 
-	it rounds to the nearest integer, and if the number is exactly halfway between two integers, 
-	it rounds to the nearest even integer.*/
 }
 
 
@@ -189,7 +183,6 @@ Fixed Fixed::operator--(int)
 	operator--();
 	return (temp);
 }
-
 
 
 /*This member function converts the fixed-point number into a floating-point representation 
