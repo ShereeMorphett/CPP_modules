@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:29:09 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/08 19:43:48 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/10 14:59:08 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,23 @@ Fixed& Fixed::operator=(Fixed const &self)
 	fixedPoint = self.getRawBits();
 	return (*this);
 }
+
+//Fixed Fixed::operator+(const Fixed& self);
+// Fixed Fixed::operator-(const Fixed& self);
+// Fixed Fixed::operator*(const Fixed& self);
+// Fixed Fixed::operator/(const Fixed& self);
+
+// bool	Fixed::operator>(const Fixed& self);
+// bool	Fixed::operator<(const Fixed& self);
+// bool	Fixed::operator>=(const Fixed& self);
+// bool	Fixed::operator<=(const Fixed& self);
+// bool	Fixed::operator==(const Fixed& self);
+// bool	Fixed::operator!=(const Fixed& self);
+
+// Fixed&	Fixed::operator++( void );
+// Fixed	Fixed::operator++( int );
+// Fixed&	Fixed::operator--( void );
+// Fixed	Fixed::operator--( int );
 
 /*This member function converts the fixed-point number into a floating-point representation 
 by dividing the raw fixed-point bits by 2 raised to the power of `fractionalBits`, 
