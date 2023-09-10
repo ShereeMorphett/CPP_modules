@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:29:09 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/10 15:29:23 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/10 15:36:04 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,19 +81,12 @@ Fixed::~Fixed()
 {
 }
 
-/*This `<<` operator overload allows you to output a `Fixed` fixed-point number to a stream.
-It converts the fixed-point value to a floating-point value, sets the output precision to two decimal
-places, and then streams it to the provided `std::ostream` object, ensuring a formatted 
-representation with two decimal places.*/
-
 std::ostream& operator<<(std::ostream& out, const Fixed& fixed)
 {
    out << fixed.toFloat();  
     return out;
 }
-/*This assignment operator overloads the `=` operator to copy the raw fixed-point representation from 
-anright `Fixed` object (`self`) into the current object and 
-returns a reference to the modified object.*/
+
 
 Fixed& Fixed::operator=(Fixed const &self)
 {
@@ -105,7 +98,7 @@ Fixed Fixed::operator+(Fixed const &right)
 {
 	Fixed value(*this);
 
-	value.setRawBits(this->getRawBits() + right.getRawBits());
+	value.setRawBits(getRawBits() + right.getRawBits());
 	return (value);
 }
 
@@ -113,7 +106,7 @@ Fixed Fixed::operator-(Fixed const &right)
 {
 	Fixed value(*this);
 
-	value.setRawBits(this->getRawBits() - right.getRawBits());
+	value.setRawBits(getRawBits() - right.getRawBits());
 	return (value);
 }
 
@@ -121,7 +114,7 @@ Fixed Fixed::operator-(Fixed const &right)
 Fixed Fixed::operator*(Fixed const &right)
 {
 	Fixed leftValue(*this);
-	long temp1 = ((long)this->getRawBits());
+	long temp1 = ((long)getRawBits());
 	long temp2 = ((long)right.getRawBits());
 	
 	leftValue.setRawBits((temp1 * temp2) / (1 << Fixed::fractionalBits));
@@ -133,7 +126,7 @@ Fixed Fixed::operator/(Fixed const &right)
 	Fixed val(*this);
 	long tmp1, tmp2;
 
-	tmp1 = ((long)this->getRawBits());
+	tmp1 = ((long)getRawBits());
 	tmp2 = ((long)right.getRawBits());
 	val.setRawBits((tmp1 * (1 << Fixed::fractionalBits)) / tmp2);
 	return (val);
@@ -141,32 +134,32 @@ Fixed Fixed::operator/(Fixed const &right)
 
 bool Fixed::operator>(const Fixed& right)
 {
-    return (this->getRawBits() > right.getRawBits());
+    return (getRawBits() > right.getRawBits());
 }
 
 bool Fixed::operator<(const Fixed& right)
 {
-	return (this->getRawBits() < right.getRawBits());
+	return (getRawBits() < right.getRawBits());
 }
 
 bool Fixed::operator>=(const Fixed& right)
 {
-	return (this->getRawBits() >= right.getRawBits());
+	return (getRawBits() >= right.getRawBits());
 }
 
 bool Fixed::operator<=(const Fixed& right)
 {
-	return (this->getRawBits() <= right.getRawBits());
+	return (getRawBits() <= right.getRawBits());
 }
 
 bool Fixed::operator==(const Fixed& right)
 {
-	return (this->getRawBits() == right.getRawBits());
+	return (getRawBits() == right.getRawBits());
 }
 
 bool Fixed::operator!=(const Fixed& right)
 {
-	return (this->getRawBits() != right.getRawBits());
+	return (getRawBits() != right.getRawBits());
 }
 
 
