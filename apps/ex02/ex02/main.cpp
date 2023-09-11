@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 14:51:29 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/10 15:28:21 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/11 09:17:21 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,15 @@ int main( void )
     std::cout << a++ << std::endl;
     std::cout << a << std::endl;
     std::cout << b << std::endl;
-    // std::cout << Fixed::max( a, b ) << std::endl;
+	
+	
+	std::cout << Fixed::max(a, b) << std::endl;
+    std::cout << Fixed::min(a, b) << std::endl;
+	
+	std::cout << Fixed::max(a, a) << std::endl;
+    std::cout << Fixed::min(a, a) << std::endl;
+
+	
     return 0;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 10:33:34 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/10 15:30:40 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/11 09:15:57 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,6 @@
 #include <iostream>
 #include <cmath>
 
-/*Add public member functions to your class to overload the following operators:
-
-• A static member function min that takes as parameters two references on fixed-point
-numbers, and returns a reference to the smallest one.
-• A static member function min that takes as parameters two references to constant
-fixed-point numbers, and returns a reference to the smallest one.
-• A static member function max that takes as parameters two references on fixed-point
-numbers, and returns a reference to the greatest one.
-• A static member function max that takes as parameters two references to constant
-fixed-point numbers, and returns a reference to the greatest one.*/
 
 
 class Fixed
@@ -60,15 +50,26 @@ class Fixed
 		Fixed	operator++(int);
 		Fixed	operator--(int);
 
+
+/*		static	const Fixed&	min(const Fixed& one, const Fixed& two);
+		static	Fixed&	min(Fixed& one, Fixed& two);
+		static	const Fixed&	max(const Fixed& one, const Fixed& two);
+		static	Fixed&	max(Fixed& one, Fixed& two);
+*/
+
+
+		static Fixed& min(Fixed& a, Fixed& b);
+		static Fixed& max(Fixed& a, Fixed& b);
+		static const Fixed& min(const Fixed& a, const Fixed& b);
+		static const Fixed& max(const Fixed& a, const Fixed& b);
+					
+
 		float toFloat(void) const;
 		int toInt(void) const;
 		int getRawBits() const;
 		void setRawBits(int const rawValue);
 };
-	
-	std::ostream& operator<<(std::ostream& out, const Fixed& fixed);
 
-
-
+std::ostream& operator<<(std::ostream& out, const Fixed& fixed);
 
 #endif

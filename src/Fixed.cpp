@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:29:09 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/10 15:37:16 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/11 09:17:07 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,8 @@ bool Fixed::operator<(const Fixed& right)
 	return (getRawBits() < right.getRawBits());
 }
 
+
+
 bool Fixed::operator>=(const Fixed& right)
 {
 	return (getRawBits() >= right.getRawBits());
@@ -183,6 +185,40 @@ Fixed Fixed::operator--(int)
 	operator--();
 	return (temp);
 }
+
+
+/////////////////////////////////////////
+
+Fixed& Fixed::min(Fixed& a, Fixed& b)
+{
+	if (a < b)
+		return a;
+	else
+		return b;
+}
+ Fixed& Fixed::max(Fixed& a, Fixed& b)
+{
+	if (b < a)
+		return a;
+	else
+		return b;
+}
+
+const Fixed& Fixed::min(const Fixed& a, const Fixed& b)
+{
+	if (a.getRawBits() < b.getRawBits())
+		return a;
+	else
+		return b;
+}
+
+const Fixed& Fixed::max(const Fixed& a, const Fixed& b)
+{
+	if (a.getRawBits() > b.getRawBits())
+		return (a);
+	return (b);
+}
+//////////////////////
 
 
 /*This member function converts the fixed-point number into a floating-point representation 
