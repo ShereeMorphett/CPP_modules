@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:30:54 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/14 15:56:13 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/14 16:12:01 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void ScavTrap::attack(const std::string& target) // Override attack to print a d
 {
 	if (EnergyPoints_ > 0 && HitPoints_ > 0)
 		{
-			std::cout << COLOR_MAGENTA << "ScavTrap " << name_<< " attacks "<< target << " causing " << AttackDamage_ << " damage!" << COLOR_RESET << std::endl;
+			std::cout << COLOR_MAGENTA << "Super strong ScavTrap " << name_<< " attacks "<< target << " causing " << AttackDamage_ << " damage!" << COLOR_RESET << std::endl;
 			EnergyPoints_--;
 		}
 		else
