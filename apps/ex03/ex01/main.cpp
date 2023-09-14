@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:18:51 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/14 15:52:12 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/14 15:56:48 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,11 @@ int main()
 	std::cout << std::endl << COLOR_BRIGHT_BLUE << "Clap and Cpy trap try to use repair" << COLOR_RESET << std::endl;
 	CpyTrp.beRepaired(5);
 	ClapTrp.beRepaired(5);
+	std::cout << std::endl;
+	std::cout << std::endl;
+	ScavTrap.guardGate();
 	
+	std::cout << std::endl << COLOR_BRIGHT_BLUE << "The Battle is over!" << COLOR_RESET << std::endl;
 	
 	
 	return 0;

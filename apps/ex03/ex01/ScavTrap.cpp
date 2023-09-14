@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:30:54 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/14 15:21:46 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/14 15:56:13 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,5 @@ void ScavTrap::attack(const std::string& target) // Override attack to print a d
 
 void ScavTrap::guardGate()
 {
-    std::cout << "ScavTrap " << GetName() << " is now in Gatekeeper mode!" << std::endl;
+    std::cout << COLOR_CYAN  << "ScavTrap " << GetName() << " is now in Gatekeeper mode!" << COLOR_RESET << std::endl;
 }
