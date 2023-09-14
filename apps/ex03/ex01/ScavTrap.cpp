@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:30:54 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/14 15:56:13 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/14 16:05:53 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ScavTrap::ScavTrap(std::string id) : ClapTrap(id)
 {
     std::cout << "ScavTrap named " << id << " created!" << std::endl;
-    HitPoints_ = 100;         // Initialize ScavTrap attributes
+    HitPoints_ = 100;
     EnergyPoints_ = 50;
     AttackDamage_ = 20;
 }

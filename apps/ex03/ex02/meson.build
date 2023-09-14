@@ -1,5 +1,5 @@
 app_exes += executable(
-    'ex01',
+    'ex02',
     files('main.cpp', 'ClapTrap.cpp', 'ScavTrap.cpp'),
     dependencies: [ft_dep]
 )
