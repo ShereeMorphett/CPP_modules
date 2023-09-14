@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:29:09 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/11 09:17:07 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/11 10:46:08 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,6 @@ Fixed Fixed::operator--(int)
 }
 
 
-/////////////////////////////////////////
 
 Fixed& Fixed::min(Fixed& a, Fixed& b)
 {
@@ -218,8 +217,6 @@ const Fixed& Fixed::max(const Fixed& a, const Fixed& b)
 		return (a);
 	return (b);
 }
-//////////////////////
-
 
 /*This member function converts the fixed-point number into a floating-point representation 
 by dividing the raw fixed-point bits by 2 raised to the power of `fractionalBits`, 

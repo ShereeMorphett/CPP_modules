@@ -5,20 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 08:52:35 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/11 08:53:23 by smorphet         ###   ########.fr       */
+/*   Created: 2023/09/14 12:18:51 by smorphet          #+#    #+#             */
+/*   Updated: 2023/09/14 15:11:10 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft/Point.hpp"
+#include "ClapTrap.hpp"
+
+
 
 int main()
 {
-	Point a;
-	Point b;
-	Point c;
-	Point toFind;
-
-
+	ClapTrap ClapTrp("ClapTrap");
+	ClapTrap CpyTrp(ClapTrp);
+	
+	CpyTrp.beRepaired(5);
+	ClapTrp.beRepaired(5);
+	ClapTrp.attack(CpyTrp.GetName());
+	CpyTrp.takeDamage(ClapTrp.GetAttackDamage());
+	ClapTrp.takeDamage(CpyTrp.GetAttackDamage());
+	ClapTrp.beRepaired(5);
+	
 	return 0;
 }
