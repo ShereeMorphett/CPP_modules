@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:18:51 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/14 16:02:59 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/14 15:56:48 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@
 int main()
 {
 	ClapTrap ClapTrp("ClapTrap");
-	ClapTrap CpyTrp(ClapTrp);
 	ScavTrap ScavTrap("ScavTrap");
-	
-	CpyTrp.setName("COPYTrap");
+	ClapTrap CpyTrp(ClapTrp);
 	
 	std::cout << COLOR_BRIGHT_BLUE << "Battle Comences" << COLOR_RESET << std::endl;
 	CpyTrp.attack(ScavTrap.GetName());

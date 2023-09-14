@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 10:55:33 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/14 16:02:25 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/14 15:08:42 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ class ClapTrap
 	 void takeDamage(unsigned int amount);
 	 void beRepaired(unsigned int amount);
 	 int GetAttackDamage();
-	 void setName(std::string target);
 	 std::string GetName();
 
 };

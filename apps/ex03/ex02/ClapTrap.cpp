@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 10:55:27 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/14 16:02:36 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/14 15:51:26 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,6 @@ void ClapTrap::beRepaired(unsigned int amount)
 	}
 	
 }
-void ClapTrap::setName(std::string target)
-{
-	name_ = target;
-};
-
 
 ClapTrap& ClapTrap::operator=(ClapTrap const &right)
 {
