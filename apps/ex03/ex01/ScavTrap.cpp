@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:30:54 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/14 16:05:53 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/15 16:13:22 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,6 @@
 #include "ScavTrap.hpp"
 
 
-ScavTrap::ScavTrap(std::string id) : ClapTrap(id)
-{
-    std::cout << "ScavTrap named " << id << " created!" << std::endl;
-    HitPoints_ = 100;
-    EnergyPoints_ = 50;
-    AttackDamage_ = 20;
-}
-ScavTrap::~ScavTrap()
-{
-	std::cout << "ScavTrap destructor called" << std::endl;
-
-}
 void ScavTrap::attack(const std::string& target) // Override attack to print a different message
 {
 	if (EnergyPoints_ > 0 && HitPoints_ > 0)
@@ -47,4 +35,35 @@ void ScavTrap::attack(const std::string& target) // Override attack to print a d
 void ScavTrap::guardGate()
 {
     std::cout << COLOR_CYAN  << "ScavTrap " << GetName() << " is now in Gatekeeper mode!" << COLOR_RESET << std::endl;
+}
+
+
+
+ScavTrap::ScavTrap(const ScavTrap &copy): ClapTrap(copy)
+{
+	std::cout << "ScavTrap Copy Constructor called" << std::endl;
+}
+
+
+ScavTrap &ScavTrap::operator=(const ScavTrap &right)
+{
+
+	name_ = right.name_;
+	HitPoints_ = right.HitPoints_;
+	EnergyPoints_ = right.EnergyPoints_;
+	AttackDamage_ = right.AttackDamage_;
+	return (*this);
+}
+
+ScavTrap::ScavTrap(std::string id) : ClapTrap(id)
+{
+    std::cout << "ScavTrap named " << id << " created!" << std::endl;
+    HitPoints_ = 100;         // Initialize ScavTrap attributes
+    EnergyPoints_ = 50;
+    AttackDamage_ = 20;
+}
+ScavTrap::~ScavTrap()
+{
+	std::cout << "ScavTrap destructor called" << std::endl;
+
 }

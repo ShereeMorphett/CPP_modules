@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 16:13:58 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/14 16:20:02 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/15 16:26:15 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,35 @@ void FragTrap::highFivesGuys(void)
 	std::cin >> response;
 	
 	if (response == 'y')
-		std::cout << GetName() << ": WOOOO! High-Fives all round!" << std::endl;
+		std::cout << GetName() << ": WOOOO! High-Fives all round!" << COLOR_RESET << std::endl;
 	else
 		std::cout << GetName() << ": Well this is awkward....." << COLOR_RESET << std::endl;
 }
 
-
 FragTrap::FragTrap(std::string id) : ClapTrap(id)
 {
     std::cout << "FragTrap named " << id << " created!" << std::endl;
-    HitPoints_ = 100;         // Initialize FragTrap attributes
+    HitPoints_ = 100;         // Initialize FragTrap specific attributes
     EnergyPoints_ = 100;
     AttackDamage_ = 30;
 }
+
+FragTrap::FragTrap(const FragTrap &copy): ClapTrap(copy)
+{
+	std::cout << "FragTrap Copy Constructor called" << std::endl;
+}
+
+
+FragTrap &FragTrap::operator=(const FragTrap &right)
+{
+
+	this->name_ = right.name_;
+	this->HitPoints_ = right.HitPoints_;
+	this->EnergyPoints_ = right.EnergyPoints_;
+	this->AttackDamage_ = right.AttackDamage_;
+	return (*this);
+}
+
 FragTrap::~FragTrap()
 {
 	std::cout << "FragTrap destructor called" << std::endl;
