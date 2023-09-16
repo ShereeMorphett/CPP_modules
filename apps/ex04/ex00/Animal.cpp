@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 16:56:44 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/16 16:13:39 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/16 18:03:40 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ Animal::Animal()
 
 Animal::Animal(std::string type)
 {
-    std::cout << "Animal with type constructor called" << std::endl;
+    std::cout << "Animal with type " << type << " constructor called" << std::endl;
     Type_ = type;
 }
 

@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 16:20:15 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/16 17:47:45 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/16 18:03:34 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ WrongAnimal::WrongAnimal()
 
 WrongAnimal::WrongAnimal(std::string type)
 {
-    std::cout << "WrongAnimal with type constructor called" << std::endl;
+    std::cout << "WrongAnimal with " << type << " constructor called" << std::endl;
     Type_ = type;
 }
 

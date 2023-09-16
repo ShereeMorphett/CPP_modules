@@ -16,7 +16,7 @@
 
 void WrongCat::makeSound() const
 {
-    std::cout << COLOR_BLUE << "Wrong Meow! " << COLOR_RESET <<std::endl;
+    std::cout << COLOR_BRIGHT_CYAN << "Wrong Meow! " << COLOR_RESET <<std::endl;
 }
 
 
@@ -27,7 +27,7 @@ WrongCat& WrongCat::operator=(WrongCat const &right)
     return (*this);
 }
 
-WrongCat::WrongCat(): WrongAnimal ("WrongCat")
+WrongCat::WrongCat(): WrongAnimal ("spaghetti")
 {
     std::cout << "WrongCat constructor called" << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 13:45:41 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/16 17:51:51 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/16 17:59:39 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int main()
     delete meta;
     delete j;
     delete i;
-    std::cout << COLOR_BRIGHT_BLUE << "End of subject given tests" << COLOR_RESET << std::endl;
+    std::cout << COLOR_BRIGHT_BLUE << "End of subject given tests" << COLOR_RESET << std::endl << std::endl;
 
     std::cout << COLOR_BRIGHT_BLUE << "Testing Wrong Animal" << COLOR_RESET << std::endl;
     const WrongAnimal* wrongMeta = new WrongAnimal();
