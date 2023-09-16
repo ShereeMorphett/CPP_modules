@@ -1,41 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 12:38:49 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/16 17:54:37 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/16 16:13:59 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "WrongCat.hpp"
 
-void Dog::makeSound() const
+
+
+void WrongCat::makeSound() const
 {
-    std::cout << COLOR_RED << "Woof! " << COLOR_RESET <<std::endl;
+    std::cout << COLOR_BLUE << "Wrong Meow! " << COLOR_RESET <<std::endl;
 }
 
-Dog& Dog::operator=(Dog const &right)
+
+WrongCat& WrongCat::operator=(WrongCat const &right)
 {
     Type_ = right.Type_;
 	
     return (*this);
 }
 
-Dog::Dog(): Animal ("Dog")
+WrongCat::WrongCat(): WrongAnimal ("WrongCat")
 {
-    std::cout << "Dog constructor called" << std::endl;
+    std::cout << "WrongCat constructor called" << std::endl;
 }
 
-Dog::Dog(Dog& Cpy)
+WrongCat::WrongCat(WrongCat& Cpy)
 {
-    std::cout << "Dog Copy constructor called" << std::endl;
+    std::cout << "WrongCat Copy constructor called" << std::endl;
     *this = Cpy;
 }
 
-Dog::~Dog()
+WrongCat::~WrongCat()
 {
-    std::cout << "Dog destructor called" << std::endl;
+    std::cout << "WrongCat destructor called" << std::endl;
 }

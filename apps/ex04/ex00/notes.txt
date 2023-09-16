@@ -1,0 +1,123 @@
+Object-oriented programming has four core concepts that make it an attractive software 
+programming paradigm.
+
+The concepts are:
+
+    Encapsulation
+    Abstraction
+    Inheritance
+    Polymorphism
+
+
+2.2.1 Encapsulation
+
+As you have seen above, object-oriented programming enable working with objects that 
+have code in addition to data. 
+Grouping data and code under the same data structure is encapsulation. 
+Encapsulation enables object-oriented programming, but it also brings other benefits.
+
+All functions associated with struct Car are under the data structure, 
+and cannot be accessed without explicitly stating which car they must operate on. 
+Thus, the name of such functions does not need to be unique, 
+although the name (or tag) of the data structure must be unique (at least in the same namespace).
+
+The number of function arguments are reduced.
+
+
+
+2.2.2 Abstraction
+
+Another problem that rises frequently in procedural languages is to expose all the internal 
+fields to its users. It is often needed to hide some fields from the user, and use them 
+internally for implementing algorithms private to the data structure only.
+This is called abstraction.
+
+Suppose that a programming language enables declaring some data structure fields as 
+private for internal use, and public. 
+Using these keywords, car structure can be declared as follows.
+
+In Listing 9, the user of car data structure cannot access passengers directly, but 
+it is forced to use member methods AddPassenger and RemovePassenger. 
+This opens up possibility to alter the algorithms for adding and removing the passengers 
+without affecting the other parts of the software as long as the signature of AddPassenger 
+and RemovePassenger remain the same. 
+Therefore, abstraction is a key concept that enables software modifications.
+
+
+
+2.2.3 Inheritance
+
+In most of the programming scenarios, some data structures have a natural hierarchy.
+For example, a car is a type of vehicle, and thus, all cars or motorcycles can be derived 
+from a common data structure vehicle.
+
+In Listing 10, a vehicle data structure is declared. A vehicle has fields common to both 
+car and motorcycles so that cars and motorcycles can be derived from a base data structure 
+vehicle. In this case, a car can be declared more efficiently as below.
+As you can observe in Listing 11 and Listing 12, these two data structures have common 
+fields of vehicle data structure declared in Listing 10. The way that these fields are used 
+may depend on the vehicle type so that the member functions are re-declared.
+Therefore, deriving data structures from another enables simpler data structure declarations 
+and associating different code to the derived objects.
+
+In general, deriving data structures from another data structure is called inheritance. 
+The most important benefit of inheritance is code reuse so that the common data or code 
+parts does not need to be repeated.
+
+In Module 2, we have defined polymorphism as the mechanism that allows using objects of derived d
+ata structures as instances of base data structures. This term is derived form words poly, 
+which means many, and morph, which means form. Thus, polymorph means many forms of the same object.
+
+In C++ language polymorphism roughly refers to being able to alter the data type of objects
+ between derived and base class types.
+
+Caution
+
+C++ applies some implicit type conversion rules on inherited classes.
+ See this article for more information. It is important to note that implicit type conversion 
+ rules are only applicable on pointers and references.
+
+
+Assignment of a derived class instance to a base class variable, however, is called object slicing.
+
+These features of C++ cause several problems, and should always be taken into account.
+
+In addition to type conversion, polymorphism also enables overriding member functions of base 
+class in the derived classes. In other words, derived classes that inherit from a base class 
+can have alternative implementations of the same function. The actual object type then determines
+ which version of the function is used. In C++, this is achieved by declaring member functions virtual.
+If a function declaration has virtual keyword prepended to function declaration, the compiler 
+ generates code for choosing the actual function implementation associated with the object at
+ run time.
+
+Let us continue with the RPG classes we have used in the previous section.
+
+
+
+
+2.2.4 Polymorphism
+
+While introducing inheritance, we mentioned that the derived data structures may alter the 
+associated member functions of the base data structure. 
+In other words, once an object of a derived data structure is instantiated, 
+the associated methods are also selected. On the other hand, since both motorcycle and 
+car objects are vehicles, the car park data structure does not need specific vehicle type.
+In particular, car park is about managing the vehicles, not specifically cars or motorcycles.
+
+Object-oriented programming languages allow polymorphism to use objects of derived data 
+structures as instances of base data structures. 
+In other words, they support morphing object data type from derived data structure to base 
+data structure and vice versa.
+
+
+
+2.3 Summary
+
+The software programming paradigm that uses objects as the building block of software 
+programs in known as object-oriented programming. 
+It also allows four computer programming concepts.
+
+    Encapsulation
+    Abstraction
+    Inheritance
+    Polymorphism
