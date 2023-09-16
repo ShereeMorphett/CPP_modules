@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 12:38:49 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/16 14:10:58 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/16 16:15:31 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Dog& Dog::operator=(Dog const &right)
     return (*this);
 }
 
-Dog::Dog(): Animal ()
+Dog::Dog(): Animal ("Dog")
 {
     std::cout << "Dog constructor called" << std::endl;
 }

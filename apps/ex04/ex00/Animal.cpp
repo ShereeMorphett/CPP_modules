@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 16:56:44 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/16 14:10:24 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/16 16:13:39 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,13 @@ Animal& Animal::operator=(Animal const &right)
 
 Animal::Animal()
 {
-    std::cout << "Animal constructor called" << std::endl;
+    std::cout << "Animal default constructor called" << std::endl;
+}
+
+Animal::Animal(std::string type)
+{
+    std::cout << "Animal with type constructor called" << std::endl;
+    Type_ = type;
 }
 
 Animal::Animal(Animal& Cpy)

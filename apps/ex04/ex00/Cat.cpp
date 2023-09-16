@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 12:38:49 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/16 14:11:11 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/16 16:13:59 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Cat& Cat::operator=(Cat const &right)
     return (*this);
 }
 
-Cat::Cat(): Animal ()
+Cat::Cat(): Animal ("Cat")
 {
     std::cout << "Cat constructor called" << std::endl;
 }
