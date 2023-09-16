@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 16:13:58 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/15 16:26:15 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/16 12:47:15 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ FragTrap::FragTrap(const FragTrap &copy): ClapTrap(copy)
 FragTrap &FragTrap::operator=(const FragTrap &right)
 {
 
-	this->name_ = right.name_;
-	this->HitPoints_ = right.HitPoints_;
-	this->EnergyPoints_ = right.EnergyPoints_;
-	this->AttackDamage_ = right.AttackDamage_;
+	name_ = right.name_;
+	HitPoints_ = right.HitPoints_;
+	EnergyPoints_ = right.EnergyPoints_;
+	AttackDamage_ = right.AttackDamage_;
 	return (*this);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 10:55:33 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/14 16:02:25 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/15 16:58:49 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@
 #include <iostream>
 #include "Color.hpp"
 
-
+/*
+    public - members are accessible from outside the class
+    private - members cannot be accessed (or viewed) from outside the class
+    protected - members cannot be accessed from outside the class, however, they can be accessed in inherited classes. You will learn more about Inheritance later.
+*/
 
 class ClapTrap
 {
