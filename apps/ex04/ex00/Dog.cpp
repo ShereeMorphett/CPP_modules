@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 12:38:49 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/16 17:54:37 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/16 18:49:40 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void Dog::makeSound() const
 
 Dog& Dog::operator=(Dog const &right)
 {
-    Type_ = right.Type_;
+    type_ = right.type_;
 	
     return (*this);
 }

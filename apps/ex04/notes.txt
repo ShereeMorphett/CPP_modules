@@ -1,3 +1,17 @@
+bject Destruction:
+
+    Proper object destruction is critical to avoid memory leaks. In this task, 
+    it's important to ensure that the Dog and Cat objects delete their associated Brain objects 
+    when they are destroyed.
+
+Deep Copy:
+
+    The task specifies that copies of Dog and Cat objects should not be shallow copies. 
+    This means that when a copy is made, it should create a new Brain object instead of sharing it 
+    with the original object.
+    This ensures that changes to one object do not affect the other.
+
+
 Object-oriented programming has four core concepts that make it an attractive software 
 programming paradigm.
 

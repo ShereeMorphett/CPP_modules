@@ -1,43 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 12:38:49 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/16 18:49:32 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/16 19:08:49 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "Dog.hpp"
 
-
-void Cat::makeSound() const
+void Dog::makeSound() const
 {
-    std::cout << COLOR_BLUE << "Meow! " << COLOR_RESET << std::endl ;
+    std::cout << COLOR_RED << "Woof! " << COLOR_RESET <<std::endl;
 }
 
-
-Cat& Cat::operator=(Cat const &right)
+Dog& Dog::operator=(Dog const &right)
 {
-    type_ = right.type_;
-	
-    return (*this);
+    *static_cast<Animal*>(this) = right; 
+	*dogBrain_ = *right.dogBrain_;
+    return *this;
 }
 
-Cat::Cat(): Animal ("Cat")
+Dog::Dog(): Animal ("Dog")
 {
-    std::cout << "Cat constructor called" << std::endl;
+    std::cout << "Dog constructor called" << std::endl;
 }
 
-Cat::Cat(Cat& Cpy)
+Dog::Dog(Dog& Cpy): Dog()
 {
-    std::cout << "Cat Copy constructor called" << std::endl;
+    std::cout << "Dog Copy constructor called" << std::endl;
     *this = Cpy;
 }
 
-Cat::~Cat()
+Dog::~Dog()
 {
-    std::cout << "Cat destructor called" << std::endl;
+    std::cout << "Dog destructor called" << std::endl;
 }

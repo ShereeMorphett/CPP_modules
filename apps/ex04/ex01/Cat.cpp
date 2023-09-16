@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 12:38:49 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/16 18:49:32 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/16 19:09:06 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,19 @@ void Cat::makeSound() const
 
 Cat& Cat::operator=(Cat const &right)
 {
-    type_ = right.type_;
-	
-    return (*this);
+    *static_cast<Animal*>(this) = right; 
+    //type_ = right.type_;
+    *catBrain_ = *right.catBrain_;
+    
+    return *this;
 }
 
-Cat::Cat(): Animal ("Cat")
+Cat::Cat(): Animal("Cat") , catBrain_(new Brain)
 {
     std::cout << "Cat constructor called" << std::endl;
 }
 
-Cat::Cat(Cat& Cpy)
+Cat::Cat(const Cat& Cpy): Cat()
 {
     std::cout << "Cat Copy constructor called" << std::endl;
     *this = Cpy;
@@ -39,5 +41,6 @@ Cat::Cat(Cat& Cpy)
 
 Cat::~Cat()
 {
+    delete catBrain_;
     std::cout << "Cat destructor called" << std::endl;
 }

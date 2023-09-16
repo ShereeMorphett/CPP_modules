@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 16:56:25 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/16 18:49:29 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/16 19:04:58 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ class Animal
         virtual void makeSound() const;
         Animal& operator=(Animal const &right);
         Animal();
-        Animal(std::string type);
-        Animal(Animal& Cpy);
+        Animal(const std::string type);
+        Animal(const Animal& Cpy);
         virtual ~Animal();
 };
 

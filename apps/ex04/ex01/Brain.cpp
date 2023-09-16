@@ -1,43 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/16 12:38:49 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/16 18:49:32 by smorphet         ###   ########.fr       */
+/*   Created: 2023/09/16 18:30:50 by smorphet          #+#    #+#             */
+/*   Updated: 2023/09/16 18:57:03 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "Brain.hpp"
 
-
-void Cat::makeSound() const
+Brain& Brain::operator=(Brain const &right)
 {
-    std::cout << COLOR_BLUE << "Meow! " << COLOR_RESET << std::endl ;
+    for(int i = 0; i  < 100; i++)
+        ideas_[i] = right.ideas_[i];
 }
 
-
-Cat& Cat::operator=(Cat const &right)
+Brain::Brain()
 {
-    type_ = right.type_;
-	
-    return (*this);
+    std::cout << "Brain constructor called" << std::endl;
 }
 
-Cat::Cat(): Animal ("Cat")
+Brain::Brain(Brain &Cpy)
 {
-    std::cout << "Cat constructor called" << std::endl;
-}
-
-Cat::Cat(Cat& Cpy)
-{
-    std::cout << "Cat Copy constructor called" << std::endl;
+    std::cout << "Brain copy constructor called" << std::endl;
     *this = Cpy;
 }
 
-Cat::~Cat()
+Brain::~Brain()
 {
-    std::cout << "Cat destructor called" << std::endl;
+    std::cout << "Brain destructor called" << std::endl;
 }
