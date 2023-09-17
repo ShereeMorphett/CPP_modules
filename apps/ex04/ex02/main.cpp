@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 13:45:41 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/17 14:50:41 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/17 15:00:43 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 int main()
 {
 	Animal	*animalArray[NUM_ANIMAL];
-
+	// Animal animal(); // shows that it cannot be instantiated (for testing/evals)
+	
 	for (int i = 0; i < NUM_ANIMAL; i++)
 	{
 		if (i < NUM_ANIMAL / 2)
@@ -35,8 +36,7 @@ int main()
 	{
 		StreamColour col(COLOR_BRIGHT_BLUE);
 		std::cout << "\n\n\n\nSTART OF TESTS" << std::endl;
-
-	
+	}
 		animalArray[0]->makeSound();
 		animalArray[1]->makeSound();
 		animalArray[2]->makeSound();
@@ -49,6 +49,7 @@ int main()
 		
 		brain = animalArray[3]->getBrain();
 		brain->setIdeas(0, "different idea");
+	
 		std::cout << "Animal from index 3 " << brain->getIdeas(0) << std::endl;
 		{
 			StreamColour col(COLOR_BRIGHT_GREEN);
@@ -60,8 +61,10 @@ int main()
 			std::cout << animalArray[3]->getBrain() << std::endl;
 			std::cout << animalArray[4]->getBrain() << std::endl;
 		}
-		StreamColour col2(COLOR_BRIGHT_BLUE);
-		std::cout << "END OF TESTS\n\n\n\n" << std::endl;
+		{
+			StreamColour col2(COLOR_BRIGHT_BLUE);
+			std::cout << "END OF TESTS\n\n\n\n" << std::endl;
+		}
 	}	
 	
 	for (int i = 0; i < NUM_ANIMAL; i++)

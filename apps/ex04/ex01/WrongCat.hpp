@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 12:39:19 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/17 14:19:38 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/16 14:09:25 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef WrongCat_HPP
+# define WrongCat_HPP
 
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 #include "Color.hpp"
-#include "Brain.hpp"
 
-class Dog : public Animal
+class WrongCat : public WrongAnimal
 {
-    private:
-        Brain *dogBrain_;
     public:
-        Dog& operator=(Dog const &right);
-        Dog();
-        Dog(Dog& Cpy);
-        ~Dog();
+        WrongCat& operator=(WrongCat const &right);
+        WrongCat();
+        WrongCat(WrongCat& Cpy);
+        ~WrongCat();
         void makeSound(void) const;
-        virtual Brain *getBrain() const;
 };
 
 #endif

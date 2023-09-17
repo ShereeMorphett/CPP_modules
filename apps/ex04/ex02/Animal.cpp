@@ -6,18 +6,11 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 16:56:44 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/17 13:17:11 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/17 14:58:01 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
-
-
-
-void Animal::makeSound() const
-{
-    std::cout << COLOR_GREEN << "Not sure what they are supposed to do in animal" << COLOR_RESET <<std::endl;
-}
 
 
 const std::string& Animal::getType() const

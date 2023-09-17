@@ -1,48 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 12:38:49 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/17 14:25:59 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/16 16:13:59 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "WrongCat.hpp"
 
-
-Brain	*Dog::getBrain() const
+void WrongCat::makeSound() const
 {
-    return dogBrain_;
+    std::cout << COLOR_BRIGHT_CYAN << "Wrong Meow! " << COLOR_RESET <<std::endl;
 }
 
 
-void Dog::makeSound() const
+WrongCat& WrongCat::operator=(WrongCat const &right)
 {
-    std::cout << COLOR_RED << "Woof! " << COLOR_RESET <<std::endl;
-}
-
-Dog& Dog::operator=(Dog const &right)
-{
-    *static_cast<Animal*>(this) = right;
-	*dogBrain_ = *right.dogBrain_;
+    Type_ = right.Type_;
+	
     return *this;
 }
 
-Dog::Dog(): Animal ("Dog"), dogBrain_(new Brain)
+WrongCat::WrongCat(): WrongAnimal ("spaghetti")
 {
-    std::cout << "Dog constructor called" << std::endl;
+    std::cout << "WrongCat constructor called" << std::endl;
 }
 
-Dog::Dog(Dog& Cpy): Dog()
+WrongCat::WrongCat(WrongCat& Cpy)
 {
-    std::cout << "Dog Copy constructor called" << std::endl;
+    std::cout << "WrongCat Copy constructor called" << std::endl;
     *this = Cpy;
 }
 
-Dog::~Dog()
+WrongCat::~WrongCat()
 {
-    std::cout << "Dog destructor called" << std::endl;
+    std::cout << "WrongCat destructor called" << std::endl;
 }

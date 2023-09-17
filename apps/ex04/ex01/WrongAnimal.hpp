@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/16 12:39:19 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/17 14:19:38 by smorphet         ###   ########.fr       */
+/*   Created: 2023/09/16 16:20:11 by smorphet          #+#    #+#             */
+/*   Updated: 2023/09/16 17:44:35 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
-#include "Animal.hpp"
+#include <string>
+#include <iostream>
 #include "Color.hpp"
-#include "Brain.hpp"
 
-class Dog : public Animal
+
+class WrongAnimal 
 {
-    private:
-        Brain *dogBrain_;
+    protected:
+        std::string Type_;
     public:
-        Dog& operator=(Dog const &right);
-        Dog();
-        Dog(Dog& Cpy);
-        ~Dog();
-        void makeSound(void) const;
-        virtual Brain *getBrain() const;
+        virtual std::string getType() const;
+        virtual void makeSound() const;
+        WrongAnimal& operator=(WrongAnimal const &right);
+        WrongAnimal();
+        WrongAnimal(std::string type);
+        WrongAnimal(WrongAnimal& Cpy);
+        virtual ~WrongAnimal();
 };
+
 
 #endif
