@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 13:45:41 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/17 15:00:43 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/18 09:20:32 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int main()
 			StreamColour col2(COLOR_BRIGHT_BLUE);
 			std::cout << "END OF TESTS\n\n\n\n" << std::endl;
 		}
-	}	
 	
 	for (int i = 0; i < NUM_ANIMAL; i++)
 		delete animalArray[i];

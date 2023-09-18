@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:29:09 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/11 10:46:08 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/18 12:54:53 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ Fixed& Fixed::operator=(Fixed const &self)
 Fixed Fixed::operator+(Fixed const &right)
 {
 	Fixed value(*this);
-
 	value.setRawBits(getRawBits() + right.getRawBits());
 	return (value);
 }
@@ -185,8 +184,6 @@ Fixed Fixed::operator--(int)
 	operator--();
 	return (temp);
 }
-
-
 
 Fixed& Fixed::min(Fixed& a, Fixed& b)
 {

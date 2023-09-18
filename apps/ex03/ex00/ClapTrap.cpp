@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 10:55:27 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/14 13:28:07 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/18 10:53:09 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 	if (HitPoints_ > 0)
 	{
 		std::cout << COLOR_RED << "ClapTrap " << name_<< " was hit! " << "It caused " << amount << " damage!" << COLOR_RESET << std::endl;
+		HitPoints_ -= amount;
 	}
 	else
 		std::cout << COLOR_RED << "ClapTrap " << name_<< " is dead stop hitting it!"<< COLOR_RESET << std::endl;
