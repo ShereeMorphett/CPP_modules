@@ -3,35 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 11:21:35 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/18 12:57:36 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/18 18:36:51 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
 
-void use(int idx, ICharacter& target)
+
+AMateria* Ice::clone() const
 {
-	std::cout << "* shoots an ice bolt at "<< target.getType() << "*" << std::endl;
+    return new Ice(*this);
+}
+
+
+void Ice::use(ICharacter& target)
+{
+	std::cout << "* shoots an ice bolt at "<< target.getName() << "*" << std::endl;
 	
 }
 
-Ice::Ice()
-{}
 
-Ice::Ice( Ice const & src )
+Ice &	Ice::operator=( Ice const &right )
 {
-	*this = src;
+	if( this != &right )
+		static_cast<AMateria&>(*this) = right;
+	return *this;
+}
+
+
+Ice::Ice() : AMateria("ice")
+{
+	//print statement
+}
+
+Ice::Ice( Ice const & src ) : AMateria(src)
+{
 }
 
 Ice::~Ice()
-{}
-
-// Ice &	Ice::operator=( Ice const & right )
-// {
-// 	if( this != &right )
-// 		_ATRIBUTE = right.ATTRIBUTE;
-// 	return (this);
-// }
+{
+	//print statement
+}

@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 09:27:56 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/18 11:15:29 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/18 19:18:18 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Color.hpp"
 
+#include "AMateria.hpp"
+#include "IMateriaSource.hpp"
 
 	/* expected outputs 
 		$> clang++ -W -Wall -Werror *.cpp
@@ -22,9 +24,9 @@
 
 int main()
 {
-	IMateriaSource* src = new MateriaSource(); 
-	src->learnMateria(new Ice()); 
-	src->learnMateria(new Cure());
+	// IMateriaSource* src = new IMateriaSource(); 
+	// src->learnMateria(new Ice()); 
+	// src->learnMateria(new Cure());
 	ICharacter* me = new Character("me");
 	
 	StreamColour col(COLOR_BLUE);

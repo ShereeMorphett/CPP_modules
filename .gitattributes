@@ -1,1 +1,11 @@
 * text eol=1f encoding=UTF-8
+
+*.pdf binary
+*.PDF binary
+*.zip binary
+*.tar binary
+*.gz binary
+*.png binary
+*.jpg binary
+*.docx binary
+*.xlsx binary
