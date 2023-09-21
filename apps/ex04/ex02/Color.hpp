@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Color.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 15:46:45 by jebouche          #+#    #+#             */
-/*   Updated: 2023/09/17 14:39:32 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/19 18:47:19 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,28 +43,28 @@
 
 // RAII helper type for setting and re-setting colour
 // Resource Acquisition Is Initialization
-class StreamColour
-{
-	private:
-		std::ostream& out_;
+// class StreamColour
+// {
+// 	private:
+// 		std::ostream& out_;
 		
-	public:
-		StreamColour(std::ostream& out, const char* col)
-			: out_(out)
-		{
-			out_ << col;
-		}
+// 	public:
+// 		StreamColour(std::ostream& out, const char* col)
+// 			: out_(out)
+// 		{
+// 			out_ << col;
+// 		}
 
-		StreamColour(const char* col)
-			: StreamColour(std::cout, col)
-		{
-		}
+// 		StreamColour(const char* col)
+// 			: StreamColour(std::cout, col)
+// 		{
+// 		}
 
-		~StreamColour()
-		{
-			out_ << COLOR_RESET;
-		}
-};
+// 		~StreamColour()
+// 		{
+// 			out_ << COLOR_RESET;
+// 		}
+// };
 
 
 

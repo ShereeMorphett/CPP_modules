@@ -5,27 +5,27 @@
 #                                                     +:+ +:+         +:+      #
 #    By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/22 10:14:02 by smorphet          #+#    #+#              #
-#    Updated: 2023/08/22 12:09:47 by smorphet         ###   ########.fr        #
+#    Created: 2023/09/18 08:53:50 by smorphet          #+#    #+#              #
+#    Updated: 2023/09/20 17:07:02 by smorphet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex02
+NAME = ex00
 
-SRC	= tests.cpp Account.cpp
+SRC	= main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
 
 OBJ	=  $(SRC:.cpp=.o)
 
-INC = Account.hpp
+INC =  Animal.hpp Cat.hpp Dog.hpp WrongAnimal.hpp WrongCat.hpp
 
 CC		= c++
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 
 
-all: $(NAME) $(NAME)
+all: $(NAME)
 
-$(OBJ):
-	cc -c $(FLAGS) $(SRC)
+$(OBJ): $(SRC)
+	$(CC) -c $(FLAGS) $(SRC)
 
 $(NAME):$(OBJ)
 	$(CC) $(FLAGS) $(OBJ) -o $(NAME)

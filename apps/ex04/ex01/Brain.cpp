@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 18:30:50 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/17 14:24:31 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/20 13:59:14 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,22 @@ void Brain::setIdeas(int index, const std::string& str)
         ideas_[index] = str;
     }
     else
-        std::cout << "doesnt work" << std::endl;
+        std::cout << "Index out of bounds" << std::endl;
 }
 
 Brain& Brain::operator=(Brain const &right)
 {
-    for(int i = 0; i  < 100; i++)
+    for(int i = 0; i < 100; i++)
         ideas_[i] = right.ideas_[i];
     return (*this);
 }
 
 Brain::Brain()
 {
+	for (int i = 0; i < 100; i++)
+    {
+        ideas_[i] = "";
+    }
     std::cout << "Brain constructor called" << std::endl;
 }
 

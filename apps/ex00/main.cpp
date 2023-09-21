@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 13:45:41 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/20 15:21:58 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/20 17:17:26 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@ int main()
 {
     const Animal* meta = new Animal();
     const Animal* j = new Dog();
-	const Animal* k = new Dog(j);
+	const Dog* k = new Dog();
+	const Dog* l = new Dog(*k);
     const Animal* i = new Cat();
     std::cout << j->getType() << " " << std::endl;
 	std::cout << k->getType() << " " << std::endl;
     std::cout << i->getType() << " " << std::endl;
+	std::cout << l->getType() << " " << std::endl;
     i->makeSound();
     j->makeSound();
     meta->makeSound();

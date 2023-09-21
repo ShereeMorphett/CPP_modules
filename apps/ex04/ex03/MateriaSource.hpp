@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.hpp                                      :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 10:23:43 by smorphet          #+#    #+#             */
-/*   Updated: 2023/08/28 09:43:53 by smorphet         ###   ########.fr       */
+/*   Created: 2023/09/19 10:12:10 by smorphet          #+#    #+#             */
+/*   Updated: 2023/09/20 11:43:46 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_H
-# define PHONEBOOK_H
-#include "Contact.hpp"
-# include <string>
+
+
+#ifndef MateriaSource_HPP
+# define MateriaSource_HPP
+
 # include <iostream>
 
+#include "IMateriaSource.hpp"
 
-class Phonebook
+class AMateria;
+class Ice;
+class Cure;
+
+class MateriaSource : public IMateriaSource
 {
 	private:
-		Contact	contacts[8]; 
-		int		size;
+		AMateria *(learned_[4]);
+	
 	public:
-		Phonebook();
-		const	Contact*	GetContacts() const;//inside the function only reads the class therefore contacts behaves private
-		int					GetSize() const;
-		void				AddContact();
-		void				PrintContact(std::ostream& os, int index);
+		void printLearned_();
+ 		void learnMateria(AMateria *m);
+		AMateria* createMateria(std::string const & type);
+		MateriaSource();
+		MateriaSource(MateriaSource const & src );
+		~MateriaSource();
+		MateriaSource &	operator=( MateriaSource const & right);
 };
 
-std::ostream& operator <<(std::ostream&, const Phonebook&);
 
 #endif

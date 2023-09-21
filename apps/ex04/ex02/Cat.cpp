@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 12:38:49 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/17 14:20:09 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:57:37 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ Cat::Cat(): Animal("Cat") , catBrain_(new Brain)
     std::cout << "Cat constructor called" << std::endl;
 }
 
-Cat::Cat(const Cat& Cpy): Cat()
+Cat::Cat(const Cat& Cpy): catBrain_(new Brain(*Cpy.catBrain_))
 {
     std::cout << "Cat Copy constructor called" << std::endl;
     *this = Cpy;
@@ -46,6 +46,7 @@ Cat::Cat(const Cat& Cpy): Cat()
 
 Cat::~Cat()
 {
-    delete catBrain_;
+	if (catBrain_)
+		delete catBrain_;
     std::cout << "Cat destructor called" << std::endl;
 }

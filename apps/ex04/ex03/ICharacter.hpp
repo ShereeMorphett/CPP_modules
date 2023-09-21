@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 10:00:56 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/18 19:16:49 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/20 10:59:55 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ class AMateria;
 class ICharacter //Interface there for none instantiable
 {
  	public:
+		virtual void printFloor() const = 0;
 		virtual ~ICharacter() {};
 		virtual std::string const &getName() const = 0;
 		virtual void equip(AMateria* m) = 0;

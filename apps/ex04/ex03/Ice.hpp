@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 11:06:48 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/18 19:10:51 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:41:50 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class Ice : public AMateria
 		AMateria* clone() const;
 		void use(ICharacter& target);
 		Ice();
+		Ice(std::string type);
 		Ice( Ice const & src );
 		~Ice();
 

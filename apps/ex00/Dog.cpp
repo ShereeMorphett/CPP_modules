@@ -6,18 +6,11 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 12:38:49 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/20 15:57:44 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/20 17:16:20 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
-
-
-Brain	*Dog::getBrain() const
-{
-    return dogBrain_;
-}
-
 
 void Dog::makeSound() const
 {
@@ -26,17 +19,17 @@ void Dog::makeSound() const
 
 Dog& Dog::operator=(Dog const &right)
 {
-    *static_cast<Animal*>(this) = right;
-	*dogBrain_ = *right.dogBrain_;
-    return *this;
+    type_ = right.type_;
+	
+    return (*this);
 }
 
-Dog::Dog(): Animal ("Dog"), dogBrain_(new Brain)
+Dog::Dog(): Animal ("Dog")
 {
     std::cout << "Dog constructor called" << std::endl;
 }
 
-Dog::Dog(Dog& Cpy): dogBrain_(new Brain(*Cpy.dogBrain_))
+Dog::Dog(const Dog& Cpy)
 {
     std::cout << "Dog Copy constructor called" << std::endl;
     *this = Cpy;
@@ -44,7 +37,5 @@ Dog::Dog(Dog& Cpy): dogBrain_(new Brain(*Cpy.dogBrain_))
 
 Dog::~Dog()
 {
-	if (dogBrain_)
-		delete dogBrain_;
     std::cout << "Dog destructor called" << std::endl;
 }

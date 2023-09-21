@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 11:27:11 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/18 19:15:13 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/19 16:38:34 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cure.hpp"
-
+#include "Color.hpp"
 
 AMateria* Cure::clone() const
 {
@@ -20,18 +20,27 @@ AMateria* Cure::clone() const
 
 void Cure::use(ICharacter& target)
 {
-	std::cout << "* Heals "<< target.getName() << " wounds*" << std::endl;
+	std::cout << COLOR_RED << "* Heals "<< target.getName() << "'s wounds*" << COLOR_RESET << std::endl;
 	
+}
+Cure::Cure() : AMateria("cure")
+{
+	//std::cout << "default cure constructor" << std::endl;
+}
+Cure::Cure(std::string type) : AMateria(type)
+{
+	//std::cout << "Cure constructor with type" << std::endl;
 }
 
 Cure::Cure(Cure const &src) : AMateria(src)
 {
-	//print statement
+	//std::cout << "Copy cure constructor" << std::endl;
 }
 
-
 Cure::~Cure()
-{}
+{
+	//std::cout << "Cure destructor" << std::endl;
+}
 
 Cure &	Cure::operator=( Cure const & right )
 {

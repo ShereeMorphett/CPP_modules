@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 12:39:19 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/20 13:41:27 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/16 14:09:25 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef WrongCat_HPP
+# define WrongCat_HPP
 
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 #include "Color.hpp"
-#include "Brain.hpp"
 
-
-class Cat : public Animal
+class WrongCat : public WrongAnimal
 {
-    private:
-        Brain *catBrain_;
-    
     public:
-        Cat& operator=(Cat const &right);
-        Cat();
-        Cat(const Cat& Cpy);
-        ~Cat();
+        WrongCat& operator=(WrongCat const &right);
+        WrongCat();
+        WrongCat(WrongCat& Cpy);
+        ~WrongCat();
         void makeSound(void) const;
-        Brain	*getBrain() const;
 };
 
 #endif

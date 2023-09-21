@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 11:29:26 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/18 18:58:37 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/20 11:00:13 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,14 @@ class Character : public ICharacter
 {
 	private:
 		AMateria* things_[4];
+		AMateria* floor_[100];
 		std::string name_;
 	public:
 		void equip(AMateria *m);
-		//void unequip(int idx); huh?
+		void unequip(int idx);
 		void use(int idx, ICharacter& target);
 		
+		void printFloor() const;
 		std::string const & getName() const;
 		Character(std::string name);
 		Character(Character const & ref);

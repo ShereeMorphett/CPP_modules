@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Color.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jebouche <jebouche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 15:46:45 by jebouche          #+#    #+#             */
-/*   Updated: 2023/09/19 18:46:36 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/07/05 15:46:47 by jebouche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,32 +40,5 @@
 # define BGCOLOR_PURPLE_YELLOW "\033[1;33;45m"
 # define BGCOLOR_PURPLE_BLUE "\033[1;36;45m"
 # define BGCOLOR_GREEN_YELLOW "\033[1;33;42m"
-
-// RAII helper type for setting and re-setting colour
-// Resource Acquisition Is Initialization
-// class StreamColour
-// {
-// 	private:
-// 		std::ostream& out_;
-		
-// 	public:
-// 		StreamColour(std::ostream& out, const char* col)
-// 			: out_(out)
-// 		{
-// 			out_ << col;
-// 		}
-
-// 		 StreamColour(const char* col)
-// 		 {
-//              out_ << col;
-// 		 }
-
-// 		~StreamColour()
-// 		{
-// 			out_ << COLOR_RESET;
-// 		}
-// };
-
-
 
 #endif

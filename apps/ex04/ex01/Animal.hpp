@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 16:56:25 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/17 14:18:22 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:55:10 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,7 @@ class Animal
         Animal(const std::string type);
         Animal(const Animal& Cpy);
         virtual ~Animal();
-        virtual Brain	*getBrain() const = 0; //pure virtual
+		virtual Brain *getBrain() const = 0; //pure virtual
 };
-
-
-
 
 #endif

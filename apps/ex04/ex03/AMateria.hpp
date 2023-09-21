@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 09:32:46 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/18 19:10:10 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:43:53 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class AMateria //abstract class
 	public:
 		AMateria& operator=(AMateria const &right);
 		virtual AMateria* clone() const = 0;
-		virtual void use(ICharacter& target) = 0;
+		virtual void use(ICharacter& target);
 		virtual ~AMateria();
 		std::string const &getType() const;
 };

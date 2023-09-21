@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 16:56:44 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/17 13:17:11 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/20 09:38:26 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@
 
 void Animal::makeSound() const
 {
-    std::cout << COLOR_GREEN << "Not sure what they are supposed to do in animal" << COLOR_RESET <<std::endl;
+    std::cout << COLOR_GREEN << "Some generic animal sound?" << COLOR_RESET <<std::endl;
 }
-
 
 const std::string& Animal::getType() const
 {

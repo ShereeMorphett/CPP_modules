@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 12:38:49 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/17 14:25:59 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:57:14 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ Dog::Dog(): Animal ("Dog"), dogBrain_(new Brain)
     std::cout << "Dog constructor called" << std::endl;
 }
 
-Dog::Dog(Dog& Cpy): Dog()
+Dog::Dog(Dog& Cpy): dogBrain_(new Brain(*Cpy.dogBrain_))
 {
     std::cout << "Dog Copy constructor called" << std::endl;
     *this = Cpy;
@@ -44,5 +44,7 @@ Dog::Dog(Dog& Cpy): Dog()
 
 Dog::~Dog()
 {
+	if (dogBrain_)
+		delete dogBrain_;
     std::cout << "Dog destructor called" << std::endl;
 }

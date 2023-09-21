@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 12:39:19 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/17 14:19:38 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/20 13:41:20 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Dog : public Animal
         Dog(Dog& Cpy);
         ~Dog();
         void makeSound(void) const;
-        virtual Brain *getBrain() const;
+        Brain *getBrain() const;
 };
 
 #endif
