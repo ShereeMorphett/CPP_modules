@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 13:19:29 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/26 14:00:18 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/26 16:58:56 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class Form
 		const int gradeToExecute_;	
 	
 	public:	
-		std::string beSigned(Bureaucrat bureaucrat);
+		void beSigned(Bureaucrat bureaucrat);
 		std::string getName();
 		int getGradeToSign();
 		int getGradeToExecute();
@@ -45,6 +45,12 @@ class Form
 		};
 
 		class GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
+
+		class TooManySignitures : public std::exception
 		{
 			public:
 				virtual const char* what() const throw();

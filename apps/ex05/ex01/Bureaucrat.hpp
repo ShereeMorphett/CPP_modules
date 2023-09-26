@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 08:25:46 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/26 13:39:45 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/26 16:43:40 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define Bureaucrat_HPP
 # include <iostream>
 
+class Form;
 
 class Bureaucrat
 {
@@ -23,6 +24,7 @@ class Bureaucrat
 	public:
 		std::string getName();
 		int getGrade();
+		void signForm(Form form);
 		Bureaucrat &	operator=( Bureaucrat const & right);
 		Bureaucrat(std::string name, int grade);
 		Bureaucrat( Bureaucrat const & src );

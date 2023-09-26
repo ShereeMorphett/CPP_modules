@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 08:25:46 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/26 13:11:20 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/26 16:01:36 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,6 @@
 # define Bureaucrat_HPP
 # include <iostream>
 
-/* 
-	Please note that exception classes don’t have to be designed in Orthodox Canonical Form.
-	But every other class has to.
-	First, start by the smallest cog in this vast bureaucratic machine: the Bureaucrat.
-	A Bureaucrat must have:
-	• A constant name.
-	• And a grade that ranges from 1 (highest possible grade) to 150 (lowest possible
-	grade).
-	Any attempt to instantiate a Bureaucrat using an invalid grade must throw an exception:
-	either a Bureaucrat::GradeTooHighException or a Bureaucrat::GradeTooLowException.
-*/
 
 
 class Bureaucrat

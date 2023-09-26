@@ -6,60 +6,36 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 08:24:44 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/26 13:16:52 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/26 17:12:40 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
+#include "Color.hpp"
+
+void testingForm();
+void testingBureaucrat();
+
+void testingInteraction(Bureaucrat bureaucrat, Form form)
+{
+	bureaucrat.signForm(form);
+	bureaucrat.signForm(form);
+	bureaucrat.signForm(form);
+	bureaucrat.signForm(form);
+	//YOU NEED TO FIX THE CATCH AND THROW STUFF FROM THE SIGNED
+}
 
 
 int main()
 {
-	Bureaucrat dude("dude", 1);
-	std::cout << dude.getGrade() << std::endl;
-	std::cout << dude.getName() << std::endl;
-	std::cout << dude;
+	std::cout << COLOR_GREEN << "Basic Bureaucrat tests\n" << COLOR_RESET << std::endl;
+	testingBureaucrat();
+	std::cout << COLOR_GREEN << "\nBasic Form tests\n" << COLOR_RESET << std::endl;
+	testingForm();
+	Form newForm("the form", 5, 5);
+	Bureaucrat dude("dude", 2);
+	testingInteraction(dude, newForm);
 
-	try
-	{
-		Bureaucrat dudeCpy(dude);
-		std::cout << dudeCpy.getGrade() << std::endl;
-		std::cout << dudeCpy.getName() << std::endl;
-		std::cout << dudeCpy;
-	}
-	catch(std::exception& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch(...)
-	{
-		std::cout << "There was an exception!" << std::endl;
-	}
-	
-	try
-	{
-		Bureaucrat dudeLow("Low", 151);
-	}
-	catch(std::exception& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch(...)
-	{
-		std::cout << "There was an exception!" << std::endl;
-	}
-	
-	try
-	{
-		Bureaucrat dudeHigh("High", 0);
-	}
-	catch(std::exception& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch(...)
-	{
-		std::cout << "There was an exception!" << std::endl;
-	}
 	return 0;
 }

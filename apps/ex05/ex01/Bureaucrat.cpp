@@ -6,12 +6,25 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 08:25:49 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/26 13:41:48 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/26 17:08:23 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
+void Bureaucrat::signForm(Form form)
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout << getName() << " signed " << form.getName() << std::endl;
+	}
+	catch (std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+}
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {

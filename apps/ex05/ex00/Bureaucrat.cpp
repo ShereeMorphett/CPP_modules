@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 08:25:49 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/26 13:28:54 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/26 15:40:43 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,17 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
     return "Grade is too low";
 }
 
-
-
 std::string Bureaucrat::getName()
 {
 	return name_;
 }
 
+
 int Bureaucrat::getGrade()
 {
 	return grade_;
 }
+
 Bureaucrat & Bureaucrat::operator=(Bureaucrat const & right)
 {
     if (this != &right)
