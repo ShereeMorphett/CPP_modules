@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 08:24:44 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/27 15:09:04 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/27 15:26:21 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,9 @@
 
 void testingForm();
 void testingBureaucrat();
+void testingInteraction(Bureaucrat bureaucrat, Form form);
 
-void testingInteraction(Bureaucrat bureaucrat, Form form)
-{
-	bureaucrat.signForm(form);
-	bureaucrat.setGrade(5);
-	std::cout << bureaucrat;
-	bureaucrat.signForm(form);
-	bureaucrat.signForm(form);
-}
+
 
 
 int main()

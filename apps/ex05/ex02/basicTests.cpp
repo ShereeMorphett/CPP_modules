@@ -6,13 +6,23 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 16:27:38 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/27 14:39:29 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/27 15:26:41 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 #include "Color.hpp"
+
+
+void testingInteraction(Bureaucrat bureaucrat, Form form)
+{
+	bureaucrat.signForm(form);
+	bureaucrat.setGrade(5);
+	std::cout << bureaucrat;
+	bureaucrat.signForm(form);
+	bureaucrat.signForm(form);
+}
 
 void testingForm()
 {
