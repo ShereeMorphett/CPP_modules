@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 08:25:46 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/27 15:03:28 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/09/29 15:43:19 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@ class Bureaucrat
 		const std::string name_;
 		int grade_; // 1 (highest) to 150 (lowest).
 	public:
+
+		void signForm(Form &form);
 		std::string getName();
 		int getGrade();
 		int setGrade(int grade);
-		void signForm(Form &form);
 		void increaseGrade();
 		void decreaseGrade();
 		Bureaucrat &	operator=( Bureaucrat const & right);

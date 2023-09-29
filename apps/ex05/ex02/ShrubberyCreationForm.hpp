@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 08:24:44 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/29 16:27:12 by smorphet         ###   ########.fr       */
+/*   Created: 2023/09/29 15:37:23 by smorphet          #+#    #+#             */
+/*   Updated: 2023/09/29 16:13:13 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
 #include "AForm.hpp"
-#include "Color.hpp"
-
-void testingBureaucrat();
 
 
+/*
+	Create a file <target>_shrubbery in the working directory, and writes ASCII trees inside it.*/
 
-
-
-int main()
+class ShrubberyCreationForm : public AForm
 {
-	std::cout << COLOR_GREEN << "Basic Bureaucrat tests\n" << COLOR_RESET << std::endl;
-	testingBureaucrat();
-	std::cout << COLOR_GREEN << "\nBasic Form tests\n" << COLOR_RESET << std::endl;
-	
-	return 0;
-}
+	public:
+		void execute(Bureaucrat const & executor) const;
+		ShrubberyCreationForm(std::string target);
+		ShrubberyCreationForm(ShrubberyCreationForm const & src);
+		~ShrubberyCreationForm();
+		ShrubberyCreationForm&	operator=(ShrubberyCreationForm const & right);
+};
