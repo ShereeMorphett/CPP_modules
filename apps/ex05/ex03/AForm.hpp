@@ -54,7 +54,7 @@ class AForm
 		// AForm();
 		AForm(std::string name, int toSign, int toExecute);
 		AForm(AForm const & src);
-		~AForm();
+		virtual ~AForm();
 };
 
 std::ostream& operator<<(std::ostream& out, AForm& AForm);

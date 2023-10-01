@@ -6,10 +6,9 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:37:23 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/01 17:23:06 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/01 17:23:48 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef SHRUBBERYCREATIONFORM_HPP
 #define SHRUBBERYCREATIONFORM_HPP
@@ -45,5 +44,6 @@ class ShrubberyCreationForm : public AForm
 		};
 
 };
+
 
 #endif
