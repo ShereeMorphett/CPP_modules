@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:29:09 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/18 12:54:53 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/05 15:43:28 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,14 +85,14 @@ std::ostream& operator<<(std::ostream& out, const Fixed& fixed)
 Fixed& Fixed::operator=(Fixed const &self)
 {
 	fixedPoint = self.getRawBits();
-	return (*this);
+	return *this;
 }
 
 Fixed Fixed::operator+(Fixed const &right)
 {
 	Fixed value(*this);
 	value.setRawBits(getRawBits() + right.getRawBits());
-	return (value);
+	return value;
 }
 
 Fixed Fixed::operator-(Fixed const &right)
