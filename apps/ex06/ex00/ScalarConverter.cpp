@@ -1,43 +1,103 @@
 #include "ScalarConverter.hpp"
 
 #include <limits>
+#include <cstring>
 
 // Define static data members
 int ScalarConverter::intValue_ = 0;
 float ScalarConverter::fltValue_ = 0.0f;
 char ScalarConverter::charValue_ = '\0';
 double ScalarConverter::dblValue_ = 0.0;
-int ScalarConverter::type_ = INT; // Initialize with some default type, e.g., INT
+int ScalarConverter::type_ = INT; 
 
 
-void ScalarConverter::convert(const std::string& input)
+void ScalarConverter::convert(std::string input)
 {
     setType(input);
-    convertToChar(input);
-    convertToInt(input);
-    convertToFlt(input);
-    convertToDbl(input);
+    // limit_checker = setLimitChecker(input);
+    // doFirstConversion(input);
+    if (type_ != CHAR)
+    {
+        convertToChar();
+    }
+    if (type_ != INT)
+    {
+        convertToInt();
+    }
+    if (type_ != FLOAT)
+    {
+        convertToFlt();
+    }
+    if (type_ != DOUBLE)
+    {
+        convertToDbl();
+    }
+
 }
 
-void ScalarConverter::setType(const std::string& input) //further error checking is needed
+static bool isInfOrNan(const std::string& input)
 {
-    if (input.length() == 1)
+    const char* cstr = input.c_str();
+
+    if (std::strcmp(cstr, "nanf") == 0)
+        return true;
+    else if (std::strcmp(cstr, "nan") == 0)
+        return true;
+    else if (std::strcmp(cstr, "+inf") == 0)
+        return true;
+    else if (std::strcmp(cstr, "-inf") == 0)
+        return true;
+    return false;
+}
+
+void ScalarConverter::setType(const std::string& input)
+{
+    if (isInfOrNan(input))
     {
-        char c = input[0];
-        if (std::isdigit(c))
-            type_ = INT;
-        else if (c == '.' || c == 'f' || c == 'F')
-            type_ = FLOAT;
-        else if (c == 'd' || c == 'D')
-            type_ = DOUBLE;
-        else
-            type_ = CHAR;
+        type_ = NANINF;
+        //NEEDS TO ALSO TAKE INTO ACCOUNT T-INF +INF AND NAN
+        intValue_ = std::numeric_limits<int>::infinity();
+        fltValue_ = std::numeric_limits<float>::infinity();
+        dblValue_ = std::numeric_limits<double>::infinity();
+    }
+    else if (input.empty())
+    {
+        type_ = NOTYPE;
+    }
+    else if (input.length() == 1 && !std::isdigit(input[0]))
+    {
+        type_ = CHAR;
     }
     else
     {
-        // Handle other cases here, e.g., checking for valid numeric formats
+        try
+        {
+            long double doubleConversion = stold(input, nullptr); //long double for allowing for limit checking
+            // needs to check for decimal points etc
+            // if (decimalCount(input) == 1 && input.back() == 'f' && doubleConversion <= std::numeric_limits<float>::max())
+            // {
+            //     type_ = FLOAT;
+            // }
+            // else if (decimalCount(input) == 0 && doubleConversion <= std::numeric_limits<int>::max() && doubleConversion >= std::numeric_limits<int>::min())
+            // {
+            //     type_ = INT;
+            // }
+            if (doubleConversion <= std::numeric_limits<double>::max())
+            {
+                type_ = DOUBLE;
+            }
+            else
+            {
+                type_ = NOTYPE;
+            }
+        }
+        catch (const std::exception&)
+        {
+            type_ = NOTYPE;
+        }
     }
 }
+
 
 void ScalarConverter::convertToChar(const std::string& input)
 {
@@ -135,10 +195,7 @@ std::ostream& operator<<(std::ostream& out, const ScalarConverter& right)
 
 ScalarConverter::ScalarConverter()
 {
-    intValue_= 0;
-    fltValue_ = 0.0f;
-    charValue_ = '\0';
-    dblValue_ = 0.0;
+
 }
 
 ScalarConverter::ScalarConverter( ScalarConverter const & src )
