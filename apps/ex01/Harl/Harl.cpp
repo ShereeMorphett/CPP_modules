@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:36:12 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/04 14:31:17 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/10 10:33:33 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	Harl::complain(std::string level)
 {
 	std::string	levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	
-    
     void (Harl::*complaint_funcs[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
 	for (int index = 0; index < 4; index++)
