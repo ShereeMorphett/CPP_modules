@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Searilizer.cpp                                     :+:      :+:    :+:   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 18:57:58 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/12 19:09:01 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/12 19:24:34 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "Serializer.hpp"
-#include "Data.hpp"
+
+
+
+uintptr_t Serializer::serialize(Data* ptr){}; //work out these things
+
+Data* Serializer::deserialize(uintptr_t raw){};//work out these things
 
 
 
 
-
-
-uintptr_t Serializer::serialize(Data* ptr){};
-
-Data* Serializer::deserialize(uintptr_t raw){};
-
-
-
-
-
+/// totall unneccessary but needed to meet the subject orthodox canonical bs
 Serializer::Serializer()
 {}
 
 Serializer::Serializer( Serializer const & src )
 {
-    this = src; 
+    *this = src; 
 }
 
 Serializer::~Serializer()
@@ -40,6 +36,6 @@ Serializer::~Serializer()
 
 Serializer &	Serializer::operator=( Serializer const & right )
 {
-	( void ) to_copy;
+	static_cast<void>(right);
 	return (*this);
 }
