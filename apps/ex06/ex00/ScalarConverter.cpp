@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 13:02:18 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/12 15:18:05 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/12 15:24:04 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ static void printInt(T val, char prefix)
     std::cout << "int: ";
 	if (static_cast<int>(val) < std::numeric_limits<int>::max() && static_cast<int>(val) > std::numeric_limits<int>::min())
 	{
-		if (prefix)
+		if (prefix == '-')
 			std::cout << prefix;
 		std::cout << static_cast<int>(val) << "\n";
 	}
@@ -117,7 +117,7 @@ static void printFloatingPoint(const char* typeName, T val, const char* suffix, 
     std::cout << typeName << ": ";
 	if (static_cast<Type>(val) == 0 || (static_cast<Type>(val) < std::numeric_limits<Type>::max() && static_cast<Type>(val) > std::numeric_limits<Type>::min()))
     {
-		if (prefix)
+		if (prefix == '-')
 			std::cout << prefix;
 		Type result = static_cast<Type>(val);
 		std::cout << std::fixed << std::setprecision(1) << result;

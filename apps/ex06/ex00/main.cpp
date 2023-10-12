@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 11:58:38 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/12 15:18:31 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/12 15:25:32 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,6 @@ int	main()
 		ScalarConverter::convert(test);
 		
 		test =  "nan";
-	std::cout << "\n"<< COLOR_MAGENTA << "testing: " << test << COLOR_RESET << std::endl;
-		ScalarConverter::convert(test);
-		
-		test =  "-nan";
-	std::cout << "\n"<< COLOR_MAGENTA << "testing: " << test << COLOR_RESET << std::endl;
-		ScalarConverter::convert(test);
-		
-		test =  "+nan";
 	std::cout << "\n"<< COLOR_MAGENTA << "testing: " << test << COLOR_RESET << std::endl;
 		ScalarConverter::convert(test);
 		
