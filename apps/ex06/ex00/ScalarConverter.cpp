@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 13:02:18 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/11 19:13:15 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/11 19:16:00 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,14 +198,14 @@ void ScalarConverter::convert(const std::string &input)
 }
 
 
-
-
 const char* ScalarConverter::invalidType::what() const throw()
 {
     return "There are no valid types for this input";
 }
 
-////constructors and copy operator overload////////
+
+
+////constructors and copy operator overload all not of use////////
 
 ScalarConverter::ScalarConverter()
 {}
