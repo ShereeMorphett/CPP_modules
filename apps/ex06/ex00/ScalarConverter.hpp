@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 13:02:32 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/11 17:49:40 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/12 11:45:06 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ class ScalarConverter
 		ScalarConverter(ScalarConverter const &src);
 		~ScalarConverter();
 		ScalarConverter	&operator=(ScalarConverter const &right);
-		
-
 	public:
 		static void	convert(const std::string &input);
 		class invalidType : public std::exception
@@ -33,8 +31,6 @@ class ScalarConverter
 			public:
 				virtual const char* what() const throw();
 		};
-        
-
 };
 
 #endif
