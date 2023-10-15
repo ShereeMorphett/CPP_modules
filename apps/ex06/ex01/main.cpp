@@ -6,35 +6,39 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 19:19:00 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/12 19:23:53 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/15 11:12:05 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
+#include <iostream>
+
 
 
 int main()
 {
-    Data cat;    
-    cat.species  = "Cat";
-    cat.name  = "Brian";
-    cat.numberOfLegs  = 4;
 
-    Data dog;    
-    cat.species  = "Dog";
-    cat.name  = "Doggo";
-    cat.numberOfLegs  = 4;
+    Data fish;
+    fish.species = "Fish";
+    fish.name = "Flippy";
+    fish.numberOfLegs = 0;
 
-    Data fish;    
-    cat.species  = "Fish";
-    cat.name  = "Flippy";
-    cat.numberOfLegs  = 0;
+    // Serialize the Fish object
+    uintptr_t uIntPtr = Serializer::serialize(&fish);
 
-    //use these things on those things
-    
-    // uintptr_t Serializer::serialize(Data* ptr){}; //work out these things
-
-    // Data* Serializer::deserialize(uintptr_t raw){};
+    // Deserialize the uintptr_t back to a Data pointer
+    Data *dataPtr = Serializer::deserialize(uIntPtr);
 
 
+    std::cout << "Original Fish Data (Address of Fish object): " << &fish << std::endl;
+    std::cout << "Name: " << fish.name << " Species: " << fish.species << " Legs: " << fish.numberOfLegs << std::endl;
+
+    std::cout << "\nSerialized Data (Address of Data object): " << uIntPtr << std::endl;
+
+    std::cout << "\nDeserialized Data (Address of Deserialized Data object): " << dataPtr << std::endl;
+    if (dataPtr)
+        std::cout << "Name: " << dataPtr->name << " Species: " << dataPtr->species << " Legs: " << dataPtr->numberOfLegs << std::endl;
+    else
+        std::cout << "Deserialization failed." << std::endl;
+    return 0;
 }

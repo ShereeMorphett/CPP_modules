@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Data.hpp                                           :+:      :+:    :+:   */
+/*   C.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 19:17:52 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/14 11:45:01 by smorphet         ###   ########.fr       */
+/*   Created: 2023/10/15 11:14:40 by smorphet          #+#    #+#             */
+/*   Updated: 2023/10/15 11:32:08 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DATA_HPP
-# define DATA_HPP
+#ifndef C_HPP
+# define C_HPP
+#include "Base.hpp"
 
-#include <string>
-
-/*
-Use serialize() on the address of the Data object and pass its return value to
-deserialize(). Then, ensure the return value of deserialize() compares equal to the
-original pointer.
-*/
-
-struct	Data
+class C  :  public Base
 {
-    std::string name;
-    std::string species;
-    int numberOfLegs;
-    //INVENT SOME DATA BS TO USE FOR TESTING
+
 };
 
 #endif
