@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 11:14:40 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/15 11:14:48 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/15 16:33:45 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 class Base
 {
 	public:
-		virtual ~Base( void );
+		virtual ~Base();
 };
 
 #endif

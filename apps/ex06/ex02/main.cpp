@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 11:21:01 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/15 11:34:04 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/15 16:36:41 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,20 @@ Base* generate()
 
     switch (randomValue) {
         case 0:
+        {
+            std::cout << "Creating type A" << std::endl;
             return new A();
+        }
         case 1:
+        {
+            std::cout << "Creating type B" << std::endl;
             return new B();
+        }
         case 2:
+        {
+            std::cout << "Creating type C" << std::endl;
             return new C();
+        }
     }
 
     return nullptr;
