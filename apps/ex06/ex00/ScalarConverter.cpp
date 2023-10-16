@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 13:02:18 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/12 19:12:10 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/16 10:45:39 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ static void pseudoprint(const std::string& input)
 {
 	std::cout << "char: " << "impossible" << "\n";
 	std::cout << "int: " << "impossible" << "\n";
-	std::cout << "float: " << input << "\n";
+	if (input == "-inf"  ||input == "+inf" || input == "nan"  )
+		std::cout << "float: " << input << "f" << "\n";
+	else
+		std::cout << "float: " << input << "\n";
 	if (input == "-inff"  ||input == "+inff" || input == "nanf"  )
 	{
 		std::string temp = input;
@@ -254,5 +257,6 @@ ScalarConverter::~ScalarConverter()
 
 ScalarConverter &	ScalarConverter::operator=(ScalarConverter const &right) //this is useless
 {
+	static_cast<void>(right);
     return *this;
 }

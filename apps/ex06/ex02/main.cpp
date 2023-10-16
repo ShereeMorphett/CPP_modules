@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 11:21:01 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/15 16:36:41 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/16 13:37:54 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ Feel free to use anything you like for the random choice implementation. */
 Base* generate() 
 {
     std::srand(static_cast<unsigned>(std::time(nullptr)));
-
     int randomValue = std::rand() % 3;
 
     switch (randomValue) {
