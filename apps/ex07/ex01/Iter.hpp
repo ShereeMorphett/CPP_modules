@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 17:16:26 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/16 18:23:20 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/17 09:07:38 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@
 	Your iter function template must work with any type of array. The third parameter can be an instantiated function template.
 */
 
-
-template <typename T, typename Func>
-void iter(T* arr, int length, Func func)
+template <typename T>
+void iter(T* arr, int length, void (*f)( T & ))
 {
     for (int i = 0; i < length; ++i)
 	{
-        func(arr[i]);
+        (f)(arr[i]);
     }
 }
