@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 16:07:46 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/17 16:10:32 by smorphet         ###   ########.fr       */
+/*   Created: 2023/10/17 16:06:42 by smorphet          #+#    #+#             */
+/*   Updated: 2023/10/18 13:11:54 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <algorithm>
+#include <iostream> 
+#include "Color.hpp"
+#include "Span.hpp"
+#include <set>
 
-class notFound : public std::exception
+int main()
 {
-	public:
-		virtual const char* what() const throw();
-	
-}
+	Span sp = Span(5);
 
-
-
-template<typename T>
-easyfind(T intCont, int toFind)
-{
-	throw()
-
+	// std::set<int> stand = {6, 10, 5, 1};
 
 	
+	
+	  sp.addNumber(6);
+	  sp.addNumber(3);
+	  sp.addNumber(17);
+	  sp.addNumber(9);
+	  sp.addNumber(11);
+	  std::cout << sp.shortestSpan() << std::endl;
+	//   std::cout << sp.longestSpan() << std::endl;
+	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 08:25:49 by smorphet          #+#    #+#             */
-/*   Updated: 2023/09/27 15:12:10 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/18 09:25:30 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void Bureaucrat::signForm(Form &form) // Pass Form by reference
     }
     catch (std::exception &e)
     {
-			std::cout << getName() << " couldn’t sign " <<  form.getName() << " because " << e.what() << std::endl;
+		std::cout << getName() << " couldn’t sign " <<  form.getName() << " because " << e.what() << std::endl;
     }
 }
 

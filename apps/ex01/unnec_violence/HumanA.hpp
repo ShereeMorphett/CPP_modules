@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 11:26:31 by smorphet          #+#    #+#             */
-/*   Updated: 2023/08/29 19:55:25 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/18 12:46:55 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ class HumanA
 		std::string name;
 		Weapon &weapon;
 	public:
-	HumanA(std::string id, Weapon &weaponType);
-	void attack();
+		HumanA(std::string id, Weapon &weaponType);
+		void attack();
 };
 
 #endif

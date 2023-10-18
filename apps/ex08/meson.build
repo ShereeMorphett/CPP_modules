@@ -2,7 +2,7 @@ app_exes = []
 
 
 subdir('ex00') 
-#subdir('ex01') 
+subdir('ex01') 
 #subdir('ex02') 
 
 
