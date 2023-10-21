@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 11:30:54 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/18 13:15:17 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/21 10:53:32 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
+#include <limits>
 
 /*
 	Develop a Span class that can store a maximum of N integers. N is an unsigned int variable and will be the only parameter passed to the constructor.
@@ -30,28 +31,52 @@ void Span::addNumber(int num)
 		return ; 
 		//THROW EXCEPTION
 }
-// /* The shortest span (or distance, if you prefer) between all the numbers stored, and return it. If there are no numbers stored, or only one, no span can be found. Thus, throw an exception.*/
+
 int Span::shortestSpan()
 {
-	int maxDist = 0;
-	int currentDist = 0;
-	int lastNum = 0;
-	std::set<int>::iterator itr;
+    if (nums_.size() <= 1)
+        throw spanException();
 
-	for (itr = nums_.begin(); itr != nums_.end(); itr++)
+    int shortest = std::numeric_limits<int>::max();
+    std::set<int>::iterator prev = nums_.begin();
+    std::set<int>::iterator current;
+
+    for (current = std::next(prev); current != nums_.end(); ++current)
 	{
-		currentDist = maxDist; ///
-		lastNum = *itr;
-		std::cout << lastNum << std::endl;
-	}
+        int span = *current - *prev;
+        if (span < shortest)
+            shortest = span;
+        prev = current;
+    }
 
-
-	return maxDist;
+    return shortest;
 }
 
-// /* The longest span (or distance, if you prefer) between all the numbers stored, and return it.	If there are no numbers stored, or only one, no span can be found. Thus, throw an exception.*/
-// void Span::longestSpan()
-// {}
+int Span::longestSpan()
+{
+    if (nums_.size() <= 1)
+        throw spanException();
+
+    int longest = 0;
+    std::set<int>::iterator prev = nums_.begin();
+    std::set<int>::iterator current;
+
+    for (current = std::next(prev); current != nums_.end(); ++current)
+	{
+        int span = *current - *prev;
+        if (span > longest)
+            longest = span;
+        prev = current;
+    }
+
+    return longest;
+}
+
+
+const char* Span::spanException::what() const throw()
+{
+    return "No span can be found with less than 2 numbers.";
+} 
 
 
 Span &	Span::operator=( Span const & right )
@@ -59,7 +84,6 @@ Span &	Span::operator=( Span const & right )
 	if( this != &right )
 	{
 	 	maxNum_ = right.maxNum_;
-		//deep copy the set
 	}
 	return (*this);
 }
