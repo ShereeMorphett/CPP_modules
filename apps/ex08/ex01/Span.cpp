@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 11:30:54 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/21 10:53:32 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/21 11:33:59 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ void Span::addNumber(int num)
 	if (nums_.size() < maxNum_)
 		nums_.insert(num);
 	else
-		return ; 
-		//THROW EXCEPTION
+		throw maxNumException();
 }
 
 int Span::shortestSpan()
@@ -73,9 +72,24 @@ int Span::longestSpan()
 }
 
 
+void Span::printNum()
+{
+    std::set<int>::iterator prev;
+
+    for (prev = nums_.begin(); prev != nums_.end() ; prev++)
+    {
+        std::cout << *prev << " " << std::endl;
+    }
+}
+
 const char* Span::spanException::what() const throw()
 {
     return "No span can be found with less than 2 numbers.";
+}
+
+const char* Span::maxNumException::what() const throw()
+{
+    return "Set has reached the max number";
 } 
 
 

@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:06:42 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/21 10:37:37 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/21 11:37:40 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,70 @@
 
 int main()
 {
-	Span sp = Span(5);
+	{
+		Span sp = Span(5);
 
-	
-	  sp.addNumber(6);
-	  sp.addNumber(3);
-	  sp.addNumber(17);
-	  sp.addNumber(9);
-	  sp.addNumber(11);
-	  std::cout << sp.shortestSpan() << std::endl;
-	  std::cout << sp.longestSpan() << std::endl;
+		sp.addNumber(6);
+		sp.addNumber(3);
+		sp.addNumber(17);
+		sp.addNumber(9);
+		sp.addNumber(100);
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
+	}
+	{
+		int maxNum = 10;
+		Span sp = Span(10);
+		srand(time(0));
+		for (int fill = 0; fill < maxNum; fill++)
+		{
+			int num = rand() / 2000;
+			sp.addNumber(num);
+		}
+		sp.printNum();
+		std::cout << std::endl;
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
+	}
+	{
+		try
+		{
+			int maxNum = 10000;
+			Span sp = Span(10);
+			srand(time(0));
+			for (int fill = 0; fill <= maxNum; fill++)
+			{
+				int num = rand() / 2000;
+				sp.addNumber(num);
+			}
+			std::cout << std::endl;
+			std::cout << sp.shortestSpan() << std::endl;
+			std::cout << sp.longestSpan() << std::endl;
+		}
+		catch(std::exception const &e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+	}
+	{
+		try
+		{
+			int maxNum = 10000;
+			Span sp = Span(maxNum);
+			srand(time(0));
+			for (int fill = 0; fill <= maxNum; fill++)
+			{
+				int num = rand() / 2000;
+				sp.addNumber(num);
+			}
+			std::cout << std::endl;
+			std::cout << sp.shortestSpan() << std::endl;
+			std::cout << sp.longestSpan() << std::endl;
+		}
+		catch(std::exception const &e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+	}
 	return 0;
 }
