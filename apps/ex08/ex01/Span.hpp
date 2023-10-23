@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 11:30:47 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/21 11:32:34 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/23 12:26:22 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class Span
 
 	public:
 		void addNumber(int num);
+		void addNumber(std::vector<int> num);
 		int shortestSpan();
 		int longestSpan();
 		void printNum();

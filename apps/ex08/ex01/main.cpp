@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:06:42 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/21 11:37:40 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/23 13:29:03 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "Color.hpp"
 #include "Span.hpp"
 #include <set>
+#include <vector>
 
 int main()
 {
@@ -54,6 +55,21 @@ int main()
 				sp.addNumber(num);
 			}
 			std::cout << std::endl;
+			std::cout << sp.shortestSpan() << std::endl;
+			std::cout << sp.longestSpan() << std::endl;
+		}
+		catch(std::exception const &e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+	}
+	{
+		try
+		{
+			int maxNum = 10;
+			Span sp = Span(maxNum);
+			std::vector<int> vect{ 15, 21, 33, 220, 20};
+			sp.addNumber(vect);
 			std::cout << sp.shortestSpan() << std::endl;
 			std::cout << sp.longestSpan() << std::endl;
 		}

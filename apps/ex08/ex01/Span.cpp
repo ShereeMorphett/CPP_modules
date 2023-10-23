@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 11:30:54 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/21 11:33:59 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/23 13:17:10 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 #include <limits>
+#include <vector>
 
 /*
 	Develop a Span class that can store a maximum of N integers. N is an unsigned int variable and will be the only parameter passed to the constructor.
@@ -22,13 +23,25 @@
 	Implement a member function to add many numbers to your Span in one call
 */
 
-/* addNumber() to add a single number to the Span. It will be used in order to fill it. Any attempt to add a new element if there are already N elements stored should throw an exception.*/
+/* addNumber() to add a single number/many numbers to the Span. It will be used in order to fill it. Any attempt to add a new element if there are already N elements stored should throw an exception.*/
+
 void Span::addNumber(int num)
 {
 	if (nums_.size() < maxNum_)
 		nums_.insert(num);
 	else
 		throw maxNumException();
+}
+
+void Span::addNumber(std::vector<int> num)
+{
+	for (int index = 0; index < num.size(); index++)
+	{
+		if (nums_.size() < maxNum_)
+			nums_.insert(num[index]);
+		else
+			throw maxNumException();
+	}
 }
 
 int Span::shortestSpan()
