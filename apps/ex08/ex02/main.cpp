@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 08:34:16 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/24 14:40:19 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/24 14:46:14 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,11 @@ int main()
 		
 		mstack.push_back(5);
 		mstack.push_back(17);
+		
 		std::cout << mstack.front() << std::endl;
+		
 		mstack.pop_front();
+		
 		std::cout << mstack.size() << std::endl;
 		
 		mstack.push_back(3);
@@ -57,6 +60,7 @@ int main()
 		
 		++it;
 		--it;
+		
 		while (it != ite)
 		{
 			std::cout << *it << std::endl;
