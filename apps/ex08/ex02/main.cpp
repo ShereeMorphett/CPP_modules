@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 08:34:16 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/24 13:56:08 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/24 14:40:19 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int main()
 		}
 		std::stack<int> s(mstack);	
 	}
-				std::cout << "\ntesting a list with the same code\n" << std::endl;
+	std::cout << "\ntesting a list with the same code\n" << std::endl;
 	{
 		std::list<int> mstack;
 		
