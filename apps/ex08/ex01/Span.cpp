@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 11:30:54 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/25 14:17:16 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:19:56 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void Span::addNumber(std::vector<int> num)
 	}
 }
 
-int Span::shortestSpan()
+int Span::shortestSpan() // this is wrong
 {
     if (nums_.size() <= 1)
         throw spanException();
@@ -64,26 +64,16 @@ int Span::shortestSpan()
     return shortest;
 }
 
-int Span::longestSpan()
+int Span::longestSpan() //this is wrong
 {
     if (nums_.size() <= 1)
         throw spanException();
 
-    int longest = 0;
-    std::set<int>::iterator prev = nums_.begin();
-    std::set<int>::iterator current;
+    int min = *nums_.begin();
+    int max = *nums_.end();
 
-    for (current = std::next(prev); current != nums_.end(); ++current)
-	{
-        int span = *current - *prev;
-        if (span > longest)
-            longest = span;
-        prev = current;
-    }
-
-    return longest;
+    return max - min;
 }
-
 
 void Span::printNum()
 {
