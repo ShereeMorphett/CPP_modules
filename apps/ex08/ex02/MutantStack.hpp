@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 08:37:59 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/24 13:51:19 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:53:29 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 
 template<typename T>
-class MutantStack : public std::stack<T, std::deque<T>>
+class MutantStack : public std::stack<T>
 {
 	public:
 		MutantStack();
@@ -29,10 +29,10 @@ class MutantStack : public std::stack<T, std::deque<T>>
 		typedef typename std::stack<T>::container_type::iterator iterator;
 		typedef typename std::stack<T>::container_type::const_iterator const_iterator;
 
-		typename MutantStack<T>::iterator begin() { return std::stack<T>::c.begin();};
-		typename MutantStack<T>::iterator end() { return std::stack<T>::c.end(); };
-		typename MutantStack<T>::const_iterator begin() const { return std::stack<T>::c.begin(); };
-		typename MutantStack<T>::const_iterator end() const { return std::stack<T>::c.end(); };
+		iterator begin() { return std::stack<T>::c.begin();};
+		iterator end() { return std::stack<T>::c.end(); };
+		const_iterator begin() const { return std::stack<T>::c.begin(); };
+		const_iterator end() const { return std::stack<T>::c.end(); };
 };
 #include "MutantStack.tpp"
 
