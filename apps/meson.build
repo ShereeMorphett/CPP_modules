@@ -11,4 +11,5 @@ subdir('ex05')
 subdir('ex06')
 subdir('ex07')
 subdir('ex08')
+subdir('ex09')
 #needed for every sub directory
