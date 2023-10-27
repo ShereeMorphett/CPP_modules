@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 10:55:01 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/27 11:33:43 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/27 14:18:17 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@
 # include <iostream>
 # include <map>
 # include <string>
+#include <fstream>
+#include <sstream>
 
 class BitcoinExchange
 {
 	private:
 		std::map<std::string, double> data_;
 	public:
-
+		void parseInitData();
 		BitcoinExchange ();
 		BitcoinExchange( BitcoinExchange const & src );
 		~BitcoinExchange();
