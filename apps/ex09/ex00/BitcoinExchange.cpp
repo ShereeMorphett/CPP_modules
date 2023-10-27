@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   BitCoinExchange.cpp                                :+:      :+:    :+:   */
+/*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 10:55:19 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/26 11:05:48 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/27 11:18:38 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
 
-
+const char* BitcoinExchange::FileError::what() const throw()
+{
+	return "Error reading the File";
+}
 
 // BitcoinExchange &	BitcoinExchange::operator=( BitcoinExchange const & right )
 // {
