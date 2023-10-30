@@ -6,109 +6,170 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 10:55:19 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/30 11:54:03 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/30 16:42:59 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
-
-
-static std::string	trimWs(std::string input)
+#include <iterator> 
+bool date::operator== (const date& right) const
 {
-	int start = 0;
-    int end = input.length();
+    return year == right.year && month == right.month && day == right.day;
+}
 
-    while (start < end && std::isspace(input[start]))
-        ++start;
-    while (end > start && std::isspace(input[end - 1]))
-        --end;
+bool date::operator!= (const date& right) const
+{
+    return year == right.year && month == right.month && day == right.day;
+}
 
-    return input.substr(start, end - start);
+bool date::operator< (const date& right) const
+{
+    if (year == right.year)
+    {
+        if (month == right.month)
+        {
+            return day < right.day;
+        }
+        else
+            return month < right.month;
+    }
+    else
+        return year < right.year;
+}
+
+std::ostream& operator<<( std::ostream& os , const date& right)
+{
+    os << right.year <<  "-" << right.month << "-" << right.day;
+    return os;
+}
+
+std::istream& operator>>(std::istream& is , date& right)
+{
+    char hyphen;
+    
+    is >> right.year >> hyphen;
+    if (!is || hyphen != '-')
+    {
+        is.setstate(std::ios_base::failbit);
+        return is;
+    }
+    is >> right.month >> hyphen >> right.day;
+    if (!is || hyphen != '-')
+        is.setstate(std::ios_base::failbit);
+   
+    return is;
 }
 
 void BitcoinExchange::parseInitData()
 {
-    std::string fileName = "/home/sheree/Desktop/libft_CPP/apps/ex09/ex00/data.csv";
-    std::ifstream file(fileName);
+    std::ifstream file("/home/sheree/Desktop/libft_CPP/apps/ex09/ex00/data.csv");
     std::string line;
 
-    if (file.fail())
+    if (!file)
         throw std::runtime_error("File open error");
-    getline(file, line); //skipping first line
+    getline(file, line);
     while (getline(file, line))
     {
-        std::istringstream ss(line);
-        std::string date;
-        double value;
-
-        if (getline(ss, date, ',') && ss >> value)
-            data_[date] = value;
+        std::stringstream ss(line);
+        date key;
+        char comma;
+        float value;
+        
+        ss >> key >> comma >> value;
+        if (ss && comma == ',' )
+            data_[key] = value;
         else
-            std::cerr << "Error parsing line: " << line << std::endl;
+             throw std::logic_error("Error parsing line");
     }
     file.close();
 }
-static void validateInput(std::string date, float value)
-{
 
-    // std::cout << date << "|" << std::endl;
+static void printConversion(date &userDate, float value, std::map<date, float> data_)
+{
+    std::map<date, float>::iterator it = data_.begin();
+	float convertValue= 0;
+	// Iterating over the map using Iterator till map end.
+	while (it != data_.end())
+	{
+	    if (it->first < userDate)
+		    convertValue = it->second;
+        else
+        {
+            std::cout << "at break point " << convertValue << std::endl;
+            break;
+        }
+		it++;
+	}
+    float converted =  value * convertValue;
+    std::cout << userDate << " => " << value << " = " <<  converted << std::endl;
 }
 
-static void printConversion(std::string date, float value, std::map<std::string, double> data_)
+static int validate(float value)
 {
-    std::string fixedDate = trimWs(date);
-    std::cout << "Value: " << data_[fixedDate] << std::endl;    
-    std::cout << fixedDate << "|" << std::endl;
+    if (value < 0.00)
+        return -1;
+    else if (value > 1000)
+        return 0;
+    else
+        return 1; 
 }
 
-/*
-	if (date_length != 10 || ss_line.fail() || trash1 != '-' || 
-    trash2 != '-' || trash3 != '|' || !ss_line.eof()) {
-		throw(BadInputException());
-	}
-	if (!checkDate(year, month, day)) {
-		throw(BadDateException());
-	}
-	if (value > 1000) {
-		throw(ValueTooHighException());
-	}
-	else if (value < 0) {
-		throw(ValueTooLowException());
-	}
-*/
+static bool validate(date &userDate)
+{
+    int leapYear = 0;
+    
+    if (userDate.month < 1 || userDate.month > 12 || userDate.day < 1 || userDate.day > 31)
+        return false;
+    if ((userDate.year % 4 == 0 && userDate.year % 100 != 0) || userDate.year % 400 == 0)
+        leapYear = 1;
+   if (userDate.month == 2 && ((!leapYear && userDate.day > 28) || (leapYear && userDate.day > 29)))
+        return false;
+    //check it the year is valid?
+    return true;
+}
 
 void BitcoinExchange::handleInput(std::string fileName)
 {
     std::ifstream file(fileName);
     std::string line;
-	int		year, month, day; // struct?
-	float	value;
-	char	hyphen, hyphen2, pipe;
+    date userDate;
+	float value;
+    char pipe;
 
-    if (file.fail())
+    if (!file)
         throw std::runtime_error("File open error");
     getline(file, line);
     while (getline(file, line))
     {
-        std::istringstream ss(line);
-	    ss >> year >> hyphen >> month >> hyphen2 >> day >> pipe >> value;
-        if (ss.fail() || hyphen != '-' || hyphen2 != '-' || pipe != '|' || !ss.eof())
-		    throw(InvalidInput());
-        //check for month day etc all in range check for leap year throw incorrect date error check for future date?
-        //validateInput(date, value);
-        //printConversion(date, value, data_);
+        try
+        {
+            std::istringstream ss(line);
+            ss >> userDate >> pipe >> value;
+            if (!ss || !ss.eof())
+                throw std::logic_error("invalid input"); //this needs to print the date after
+            switch (validate(value))
+            {
+                case -1:
+                    throw std::logic_error("not a positive number.");
+                    break;
+                case 0:
+                    throw std::logic_error("too large a number.");
+                    break;
+                case 1:
+                    if (!validate(userDate))
+                        throw std::logic_error("invalid date");
+                    printConversion(userDate, value, data_);
+                    break;
+                default:
+                    throw std::logic_error("invalid input");
+                    break;
+            }
+        }
+        catch(const std::exception& e)
+        {
+            std::cerr <<"Error: " << e.what() << '\n';
+        }
     }
-}
-
- 
-const char* BitcoinExchange::FileError::what() const throw()
-{
-	return "Error reading the File";
-}
-
-const char* BitcoinExchange::InvalidInput::what() const throw()
-{
-	return "Invalid input";
 }
 
 BitcoinExchange &	BitcoinExchange::operator=( BitcoinExchange const & right )
@@ -121,10 +182,11 @@ BitcoinExchange &	BitcoinExchange::operator=( BitcoinExchange const & right )
 BitcoinExchange::BitcoinExchange()
 {}
 
-BitcoinExchange::BitcoinExchange( BitcoinExchange const & src )
+BitcoinExchange::BitcoinExchange(BitcoinExchange const & src)
 {
 	*this = src; 
 }
 
 BitcoinExchange::~BitcoinExchange()
 {}
+

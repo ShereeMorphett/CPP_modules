@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 10:55:01 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/30 11:50:35 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/30 16:00:02 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,25 @@
 # include <iostream>
 # include <map>
 # include <string>
-#include <fstream>
-#include <sstream>
+# include <fstream>
+# include <sstream>
+
+
+struct date
+{
+    int year;
+    int month;
+    int day;
+    
+    bool operator== (const date& right) const;
+    bool operator!= (const date& right) const;
+    bool operator< (const date& right) const;
+};
 
 class BitcoinExchange
 {
 	private:
-		std::map<std::string, double> data_;
+		std::map<date, float> data_;
 	public:
 		void parseInitData();
 		void handleInput(std::string fileName);
@@ -30,19 +42,9 @@ class BitcoinExchange
 		BitcoinExchange( BitcoinExchange const & src );
 		~BitcoinExchange();
 		BitcoinExchange &	operator=( BitcoinExchange const & right);
-
-	class FileError : public std::exception
-	{
-		public:
-			virtual const char* what() const throw();
-	};
-
-	class InvalidInput : public std::exception
-	{
-		public:
-			virtual const char* what() const throw();
-	};
 };
 
 
+std::ostream& operator<<( std::ostream& os , const date& right);
+std::istream& operator>>(std::istream& is , const date& right);
 #endif
