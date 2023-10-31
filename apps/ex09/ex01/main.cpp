@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:48:18 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/30 17:34:28 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/31 10:05:06 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ stack<int> stack;
    */
 
 
-int main (int argc, std::string *argv)
+int main (int argc, char **argv)
 {
     if (argc != 2)
     {

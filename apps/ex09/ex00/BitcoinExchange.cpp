@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 10:55:19 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/30 16:42:59 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/31 14:16:04 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 #include <iterator> 
+
 bool date::operator== (const date& right) const
 {
     return year == right.year && month == right.month && day == right.day;
@@ -88,7 +89,6 @@ static void printConversion(date &userDate, float value, std::map<date, float> d
 {
     std::map<date, float>::iterator it = data_.begin();
 	float convertValue= 0;
-	// Iterating over the map using Iterator till map end.
 	while (it != data_.end())
 	{
 	    if (it->first < userDate)
@@ -124,7 +124,6 @@ static bool validate(date &userDate)
         leapYear = 1;
    if (userDate.month == 2 && ((!leapYear && userDate.day > 28) || (leapYear && userDate.day > 29)))
         return false;
-    //check it the year is valid?
     return true;
 }
 

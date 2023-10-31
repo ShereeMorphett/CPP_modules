@@ -3,22 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 10:55:01 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/30 16:00:02 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/10/31 14:15:54 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BitcoinExchange_HPP
 # define BitcoinExchange_HPP
-
 # include <iostream>
 # include <map>
 # include <string>
 # include <fstream>
 # include <sstream>
-
 
 struct date
 {
