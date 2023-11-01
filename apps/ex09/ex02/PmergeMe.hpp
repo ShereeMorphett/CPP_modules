@@ -6,44 +6,51 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 14:19:04 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/31 16:23:57 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/01 16:26:57 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PmergeMe_HPP
 # define PmergeMe_HPP
 
+#include "Color.hpp"
 # include <iostream>
 # include <list>
 # include <vector>
 # include <iterator>
-# define EMPTY = -1
+# define EMPTY -1
+
 
 struct Pairs
 {
 	int min;
 	int max;
+	bool operator< (const Pairs& right) const;
 };
 
 
 class PmergeMe
 {
 	private:
+		int inputSize;
 		std::list<Pairs> listData_; 
 		std::vector<Pairs> vecData_;
-		
-		// template<typename T>
-		// T sortedData_;
-		//vec start time
-		//vec used time
-		//list start time
-		//list used time
-		
-	
-		
+		std::list<int> sortedList_; 
+		std::vector<int> sortedVec_;
+
+		struct timeval vecBegin, vecEnd;
+		struct timeval listBegin, listEnd;
+				
 	public:
+	
+
+	 	template<typename T>
+		void binarySearch(int toPlace, T& container);
+		void listSorting();
+		void vectorSorting();
 		template<typename T>
-		//void print(T contain);
+		void printPairs(T container);
+		void initValues(std::vector<int>& validatedInput);
 		PmergeMe();
 		PmergeMe(PmergeMe const & src);
 		~PmergeMe();
@@ -51,6 +58,8 @@ class PmergeMe
 
 };
 
+template<typename T>
+void print(T container,  std::string heading);
 
 
 #endif

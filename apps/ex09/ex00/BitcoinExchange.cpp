@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 10:55:19 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/31 14:16:04 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/01 10:42:18 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,8 @@ static bool validate(date &userDate)
         leapYear = 1;
    if (userDate.month == 2 && ((!leapYear && userDate.day > 28) || (leapYear && userDate.day > 29)))
         return false;
+	if ((userDate.month == 4 || userDate.month == 6 || userDate.month == 11 ) && userDate.month < 30)	
+		return false;
     return true;
 }
 
