@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 10:55:01 by smorphet          #+#    #+#             */
-/*   Updated: 2023/11/02 16:29:34 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/02 16:27:00 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,10 @@ class BitcoinExchange
 		BitcoinExchange( BitcoinExchange const & src );
 		~BitcoinExchange();
 		BitcoinExchange &	operator=( BitcoinExchange const & right);
-		class InvalidDate : public std::exception
+		class invalidDate : public exception
 		{
-			public:
-				virtual const char* what() const throw();
-		};
+			
+		}
 };
 
 

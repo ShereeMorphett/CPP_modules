@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 14:19:04 by smorphet          #+#    #+#             */
-/*   Updated: 2023/11/02 15:10:46 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/02 16:00:51 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,12 @@
 #include <iomanip>
 
 # define EMPTY -1
-# define BINARY 1
+# define BINARY 0
 
+/*
+Time to process a range of 3000 elements with std::vector : 0.00174us
+
+Time to process a range of 3000 elements with std::list : 0.04534us*/
 
 template<typename T>
 void print(T container,  std::string heading);

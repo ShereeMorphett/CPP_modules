@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 14:19:09 by smorphet          #+#    #+#             */
-/*   Updated: 2023/11/02 16:29:42 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/02 16:02:44 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,12 @@ void PmergeMe::printPairs(T container)
 
 void PmergeMe::initValues(std::vector<int>& validatedInput)
 {
+	gettimeofday(&vecBegin, 0);
+	listData_.sort();
+	gettimeofday(&listBegin, 0);
+	std::sort(vecData_.begin(), vecData_.end());
 	inputSize = validatedInput.size();
-	for (int index = 0; index < validatedInput.size(); index++)
+	for (size_t index = 0; index < validatedInput.size(); index++)
     {
 		Pairs temp;
 
@@ -74,10 +78,6 @@ void PmergeMe::initValues(std::vector<int>& validatedInput)
 			break;
 		}
     }
-	gettimeofday(&vecBegin, 0);
-	listData_.sort();
-	gettimeofday(&listBegin, 0);
-	std::sort(vecData_.begin(), vecData_.end());
 }
 
 
@@ -125,13 +125,13 @@ void PmergeMe::listBinarySearch(int toPlace, std::list<int>& container)
 
 void PmergeMe::listSorting()
 {
-	for (typename std::list<Pairs>::iterator it = listData_.begin(); it != listData_.end(); it++)
+	for (std::list<Pairs>::iterator it = listData_.begin(); it != listData_.end(); it++)
     {
 		if (it->max != EMPTY)
 			sortedList_.push_back(it->max);
     }
 	
-	for (typename std::list<Pairs>::iterator it = listData_.begin(); it != listData_.end(); it++)
+	for (std::list<Pairs>::iterator it = listData_.begin(); it != listData_.end(); it++)
     {
 		listBinarySearch(it->min, sortedList_);
     }
@@ -146,23 +146,23 @@ void PmergeMe::listSorting()
 
 void PmergeMe::vectorSorting()
 {
-	for (typename std::vector<Pairs>::iterator it = vecData_.begin(); it != vecData_.end(); it++)
+	for (std::vector<Pairs>::iterator it = vecData_.begin(); it != vecData_.end(); it++)
     {
 		if (it->max != EMPTY)
 			sortedVec_.push_back(it->max);
     }
 	if (BINARY == 0)
 	{
-		for (typename std::vector<Pairs>::iterator it = vecData_.begin(); it != vecData_.end(); it++)
+		for (std::vector<Pairs>::iterator it = vecData_.begin(); it != vecData_.end(); it++)
 		{
 			vecBinarySearch(it->min, sortedVec_);
 		}
 	}
 	else
 	{
-		int jacobshtal = -1;
-		int prevJacobshtal = -1;
-		int index = 0;
+		size_t jacobshtal = -1;
+		size_t prevJacobshtal = -1;
+		size_t index = 0;
 		while (index < vecData_.size())
 		{
 			prevJacobshtal = jacobshtal;
@@ -177,19 +177,18 @@ void PmergeMe::vectorSorting()
 			}
 		}
 	}	
-	print(sortedVec_, "After:");
+	print(sortedVec_, "\n\nAfter:");
 	gettimeofday(&vecEnd, 0);
     long seconds = vecEnd.tv_sec - vecBegin.tv_sec;
     long microseconds = vecEnd.tv_usec - vecBegin.tv_usec;
     float elapsed = seconds + microseconds*1e-6;
-	std::cout << "Time to process a range of " << inputSize << " elements with std::vector : " << std::fixed << std::setprecision(5) << elapsed << "us\n" << std::endl;
+	std::cout << "\nTime to process a range of " << inputSize << " elements with std::vector : " << std::fixed << std::setprecision(5) << elapsed << "us\n" << std::endl;
 }
 
 bool Pairs::operator< (const Pairs& right) const
 {
 	return max < right.max;
 }
-
 
 ///basic constructors etc///
 
