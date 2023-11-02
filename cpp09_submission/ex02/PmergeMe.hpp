@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 14:19:04 by smorphet          #+#    #+#             */
-/*   Updated: 2023/11/02 16:00:51 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/02 20:48:55 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,16 @@
 # include <vector>
 # include <string>
 # include <iterator>
+# include <algorithm>
 #include <sys/time.h>
 #include <iomanip>
 
 # define EMPTY -1
-# define BINARY 0
+# define BINARY 1
 
-/*
-Time to process a range of 3000 elements with std::vector : 0.00174us
-
-Time to process a range of 3000 elements with std::list : 0.04534us*/
 
 template<typename T>
-void print(T container,  std::string heading);
+void print(T container,  const std::string& heading);
 int Jacobsthal(int n);
 int getNextJacobsthal(int last);
 
@@ -52,8 +49,8 @@ class PmergeMe
 		std::list<int> sortedList_; 
 		std::vector<int> sortedVec_;
 
-		struct timeval vecBegin, vecEnd;
-		struct timeval listBegin, listEnd;
+		timeval vecBegin, vecEnd;
+		timeval listBegin, listEnd;
 				
 	public:
 

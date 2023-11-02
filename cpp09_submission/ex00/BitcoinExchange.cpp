@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 10:55:19 by smorphet          #+#    #+#             */
-/*   Updated: 2023/11/02 16:24:41 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/02 20:39:25 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,16 +119,16 @@ static bool validate(date &userDate)
         return false;
     if ((userDate.year % 4 == 0 && userDate.year % 100 != 0) || userDate.year % 400 == 0)
         leapYear = 1;
-   if (userDate.month == 2 && ((!leapYear && userDate.day > 28) || (leapYear && userDate.day > 29)))
+    if (userDate.month == 2 && ((!leapYear && userDate.day > 28) || (leapYear && userDate.day > 29)))
         return false;
-	if ((userDate.month == 4 || userDate.month == 6 || userDate.month == 11 ) && userDate.month < 30)	
+    if ((userDate.month == 4 || userDate.month == 6 || userDate.month == 11 ) && userDate.month < 30)	
 		return false;
     return true;
 }
 
 void BitcoinExchange::handleInput(std::string fileName)
 {
-    std::ifstream file(fileName);
+    std::ifstream file(fileName.c_str());
     std::string line;
     date userDate;
 	float value;
@@ -144,10 +144,10 @@ void BitcoinExchange::handleInput(std::string fileName)
             std::istringstream ss(line);
             ss >> userDate >> pipe >> value;
             if (!ss || !ss.eof())
-                throw std::logic_error("invalid input");
+                throw std::logic_error("Bad input => " + line);
 			std::map<date, float>::iterator it = data_.begin();
 			if (userDate < it->first)
-                throw std::logic_error("Date is before data set");			
+                throw std::logic_error("Input predates database");			
             switch (validate(value))
             {
                 case -1:

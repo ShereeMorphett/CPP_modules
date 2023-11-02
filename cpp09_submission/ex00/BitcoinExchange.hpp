@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 10:55:01 by smorphet          #+#    #+#             */
-/*   Updated: 2023/11/02 16:27:00 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/02 20:32:39 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,7 @@ class BitcoinExchange
 		BitcoinExchange( BitcoinExchange const & src );
 		~BitcoinExchange();
 		BitcoinExchange &	operator=( BitcoinExchange const & right);
-		class invalidDate : public exception
-		{
-			
-		}
+
 };
 
 

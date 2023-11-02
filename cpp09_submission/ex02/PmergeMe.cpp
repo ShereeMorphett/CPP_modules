@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 14:19:09 by smorphet          #+#    #+#             */
-/*   Updated: 2023/11/02 16:02:44 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/02 20:47:52 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
 template<typename T>
-void print(T contain, std::string heading) 
+void print(T contain, const std::string& heading) 
 {
 	std::cout << COLOR_MAGENTA << heading << " " << COLOR_RESET; 
     for (typename T::iterator it = contain.begin(); it != contain.end(); it++)

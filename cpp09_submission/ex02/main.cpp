@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 14:19:06 by smorphet          #+#    #+#             */
-/*   Updated: 2023/11/02 15:11:29 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/02 20:43:19 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+#include <cstdlib>
 
 
 static void startProgram(std::vector<int>&  validatedInput)
@@ -32,7 +33,7 @@ int main(int argc, char **argv)
 		std::vector<int> validatedInput;
         for (int i = 1; i < argc; ++i)
         {
-			if (isdigit(*argv[i]))
+			if (std::isdigit(*argv[i]))
 			{
 				int value = std::atoi(argv[i]);
 				if (value < 0)
