@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:35:05 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/31 14:15:43 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:27:15 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ int main(int argc, char* argv[])
     try
     {
         exchange.parseInitData();
-        // exchange.conversion(argv[1]);
-         exchange.handleInput("/home/sheree/Desktop/libft_CPP/apps/ex09/ex00/input.txt");
+        exchange.handleInput(argv[1]);
 
     }
     catch (const std::exception& e)

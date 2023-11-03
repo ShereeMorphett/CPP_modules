@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 10:55:19 by smorphet          #+#    #+#             */
-/*   Updated: 2023/11/02 16:34:29 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/02 20:39:25 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ std::istream& operator>>(std::istream& is , date& right)
 
 void BitcoinExchange::parseInitData()
 {
-    std::ifstream file("/home/sheree/Desktop/libft_CPP/apps/ex09/ex00/data.csv");
+    std::ifstream file("data.csv");
     std::string line;
 
     if (!file)
@@ -94,10 +94,7 @@ static void printConversion(date &userDate, float value, std::map<date, float> d
 	    if (it->first < userDate)
 		    convertValue = it->second;
         else
-        {
-            std::cout << "at break point " << convertValue << std::endl;
             break;
-        }
 		it++;
 	}
     float converted =  value * convertValue;
@@ -117,21 +114,21 @@ static int validate(float value)
 static bool validate(date &userDate)
 {
     int leapYear = 0;
-    
+
     if (userDate.month < 1 || userDate.month > 12 || userDate.day < 1 || userDate.day > 31)
         return false;
     if ((userDate.year % 4 == 0 && userDate.year % 100 != 0) || userDate.year % 400 == 0)
         leapYear = 1;
-   if (userDate.month == 2 && ((!leapYear && userDate.day > 28) || (leapYear && userDate.day > 29)))
+    if (userDate.month == 2 && ((!leapYear && userDate.day > 28) || (leapYear && userDate.day > 29)))
         return false;
-	if ((userDate.month == 4 || userDate.month == 6 || userDate.month == 11 ) && userDate.month < 30)	
+    if ((userDate.month == 4 || userDate.month == 6 || userDate.month == 11 ) && userDate.month < 30)	
 		return false;
     return true;
 }
 
 void BitcoinExchange::handleInput(std::string fileName)
 {
-    std::ifstream file(fileName);
+    std::ifstream file(fileName.c_str());
     std::string line;
     date userDate;
 	float value;
@@ -147,7 +144,10 @@ void BitcoinExchange::handleInput(std::string fileName)
             std::istringstream ss(line);
             ss >> userDate >> pipe >> value;
             if (!ss || !ss.eof())
-                throw InvalidDate();
+                throw std::logic_error("Bad input => " + line);
+			std::map<date, float>::iterator it = data_.begin();
+			if (userDate < it->first)
+                throw std::logic_error("Input predates database");			
             switch (validate(value))
             {
                 case -1:
@@ -171,11 +171,6 @@ void BitcoinExchange::handleInput(std::string fileName)
             std::cerr <<"Error: " << e.what() << '\n';
         }
     }
-}
-
-const char* BitcoinExchange::InvalidDate::what() const throw()
-{
-    return "invalid input => ";
 }
 
 BitcoinExchange &	BitcoinExchange::operator=( BitcoinExchange const & right )

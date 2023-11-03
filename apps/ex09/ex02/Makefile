@@ -6,20 +6,20 @@
 #    By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/18 08:53:50 by smorphet          #+#    #+#              #
-#    Updated: 2023/11/02 15:23:03 by smorphet         ###   ########.fr        #
+#    Updated: 2023/11/03 15:48:12 by smorphet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = RPN
+NAME = PmergeMe
 
-SRC	= main.cpp RPN.cpp
+SRC	= main.cpp PmergeMe.cpp
 
 OBJ	=  $(SRC:.cpp=.o)
 
-INC = RPN.hpp Color.hpp
+INC = PmergeMe.hpp Color.hpp
 
 CC		= c++
-FLAGS	= -Wall -Wextra -Werror -std=c++98
+FLAGS	= -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 
 
 all: $(NAME) $(NAME)

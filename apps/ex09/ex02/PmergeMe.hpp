@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 14:19:04 by smorphet          #+#    #+#             */
-/*   Updated: 2023/11/02 15:10:46 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/03 14:36:22 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 
 
 template<typename T>
-void print(T container,  std::string heading);
+void print(T container,  const std::string& heading);
 int Jacobsthal(int n);
 int getNextJacobsthal(int last);
 

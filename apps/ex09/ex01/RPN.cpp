@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:59:12 by smorphet          #+#    #+#             */
-/*   Updated: 2023/10/31 12:51:36 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/03 13:25:21 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void RPN::runMathsOperator(int token)
 			equation_.pop();
 			if (value1 >= 0 && value2 >= 0)
 				answer = static_cast<double>(value2) / static_cast<double>(value1);
-			if (checkAnswer(answer) && value1 >= 0 && value2 >= 2 )
+			if (checkAnswer(answer) && (value1 > 0 && value2 >= 0))
 				equation_.push(value2 / value1);
 			else
 				throw std::logic_error("Error");

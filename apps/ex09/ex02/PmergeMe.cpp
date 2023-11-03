@@ -6,14 +6,15 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 14:19:09 by smorphet          #+#    #+#             */
-/*   Updated: 2023/11/02 16:29:42 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:47:37 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+#include <set>
 
 template<typename T>
-void print(T contain, std::string heading) 
+void print(T contain, const std::string& heading) 
 {
 	std::cout << COLOR_MAGENTA << heading << " " << COLOR_RESET; 
     for (typename T::iterator it = contain.begin(); it != contain.end(); it++)
@@ -21,20 +22,6 @@ void print(T contain, std::string heading)
         std::cout << *it << " ";
     }
 	std::cout << std::endl;
-}
-
-int Jacobsthal(int n)
-{
-    if (n == 0)
-        return 3;
-    if (n == 1)
-        return 3;
-    return Jacobsthal(n - 1) + 2 * Jacobsthal(n - 2);
-}
-
-int getNextJacobsthal(int last)
-{
-    return Jacobsthal(last + 1);
 }
 
 template<typename T>
@@ -45,14 +32,23 @@ void PmergeMe::printPairs(T container)
         std::cout << "Min: " << it->min << "	" << "Max: " << it->max << std::endl;
     }
 }
+int Jacobsthal(int n)
+{
+    if (n == 0)
+        return 3;
+    if (n == 1)
+        return 1;
+    return Jacobsthal(n - 1) + 2 * Jacobsthal(n - 2);
+}
 
 void PmergeMe::initValues(std::vector<int>& validatedInput)
 {
 	inputSize = validatedInput.size();
+	gettimeofday(&listBegin, 0);
+	gettimeofday(&vecBegin, 0);
 	for (int index = 0; index < validatedInput.size(); index++)
     {
 		Pairs temp;
-
 		if (index + 1 < validatedInput.size())
 		{
 			temp.max  = validatedInput[index];
@@ -74,10 +70,12 @@ void PmergeMe::initValues(std::vector<int>& validatedInput)
 			break;
 		}
     }
-	gettimeofday(&vecBegin, 0);
 	listData_.sort();
-	gettimeofday(&listBegin, 0);
 	std::sort(vecData_.begin(), vecData_.end());
+	printPairs(listData_);
+	std::cout << std::endl;
+	printPairs(vecData_);
+	std::cout << std::endl;
 }
 
 
@@ -113,7 +111,8 @@ void PmergeMe::listBinarySearch(int toPlace, std::list<int>& container)
 		if (toPlace < *mid)
 		{
 			high = mid;
-		} else
+		}
+		else
 		{
 			low = mid;
 			++low; 
@@ -140,7 +139,7 @@ void PmergeMe::listSorting()
     long seconds = listEnd.tv_sec - listBegin.tv_sec;
     long microseconds = listEnd.tv_usec - listBegin.tv_usec;
     double elapsed = seconds + microseconds*1e-6;
-	// print(sortedList_, "Sorted List:");
+	print(sortedList_, "Sorted List:");
 	std::cout << "Time to process a range of " << inputSize << " elements with std::list : " << elapsed << "us\n" << std::endl;
 }
 
@@ -160,24 +159,35 @@ void PmergeMe::vectorSorting()
 	}
 	else
 	{
-		int jacobshtal = -1;
-		int prevJacobshtal = -1;
-		int index = 0;
-		while (index < vecData_.size())
+		size_t jacobshtal = 0;
+		size_t prevJacobshtal = 0;
+		size_t index = 0;
+			
+		std::set<size_t> usedIndices;  // Create a set to keep track of used indices
+		
+		while (sortedVec_.size() != inputSize)
 		{
 			prevJacobshtal = jacobshtal;
-			jacobshtal = getNextJacobsthal(prevJacobshtal);
-			if (jacobshtal > vecData_.size())
-				jacobshtal = inputSize;
+			jacobshtal = Jacobsthal(prevJacobshtal);
+			
+			if (jacobshtal >= vecData_.size())
+				jacobshtal = vecData_.size() - 1;
+			
 			index = jacobshtal;
-			while (index != prevJacobshtal)
+			
+			while (index >= prevJacobshtal)
 			{
-				vecBinarySearch(vecData_[index].min, sortedVec_);
+				// Check if the index has been used before
+				if (usedIndices.find(index) == usedIndices.end())
+				{
+					vecBinarySearch(vecData_[index].min, sortedVec_);
+					usedIndices.insert(index);  // Mark the index as used
+				}
 				index--;
 			}
 		}
-	}	
-	print(sortedVec_, "After:");
+	}
+	print(sortedVec_, "\n\nAfter:");
 	gettimeofday(&vecEnd, 0);
     long seconds = vecEnd.tv_sec - vecBegin.tv_sec;
     long microseconds = vecEnd.tv_usec - vecBegin.tv_usec;

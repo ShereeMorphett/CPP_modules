@@ -6,17 +6,17 @@
 #    By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/18 08:53:50 by smorphet          #+#    #+#              #
-#    Updated: 2023/11/02 15:22:34 by smorphet         ###   ########.fr        #
+#    Updated: 2023/11/03 12:38:52 by smorphet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = PmergeMe
+NAME = btc
 
-SRC	= main.cpp PmergeMe.cpp
+SRC	= main.cpp BitcoinExchange.cpp
 
 OBJ	=  $(SRC:.cpp=.o)
 
-INC = PmergeMe.hpp Color.hpp
+INC = BitcoinExchange.hpp Color.hpp
 
 CC		= c++
 FLAGS	= -Wall -Wextra -Werror -std=c++98

@@ -6,7 +6,7 @@
 #    By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/18 08:53:50 by smorphet          #+#    #+#              #
-#    Updated: 2023/10/31 12:00:22 by smorphet         ###   ########.fr        #
+#    Updated: 2023/11/03 12:38:39 by smorphet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,10 @@ SRC	= main.cpp RPN.cpp
 
 OBJ	=  $(SRC:.cpp=.o)
 
-INC = Color.hppm RPN.hpp
+INC = RPN.hpp Color.hpp
 
 CC		= c++
-FLAGS	= -Wall -Wextra -Werror -std=c++98  -fsanitize=address
+FLAGS	= -Wall -Wextra -Werror -std=c++98
 
 
 all: $(NAME) $(NAME)
