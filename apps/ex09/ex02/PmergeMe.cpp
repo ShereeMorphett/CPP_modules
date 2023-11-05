@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 14:19:09 by smorphet          #+#    #+#             */
-/*   Updated: 2023/11/05 16:49:42 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/05 17:06:48 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,12 +131,40 @@ void PmergeMe::listSorting()
 		if (it->max != EMPTY)
 			sortedList_.push_back(it->max);
     }
-	
-	for (typename std::list<Pairs>::iterator it = listData_.begin(); it != listData_.end(); it++)
-    {
-		listBinarySearch(it->min, sortedList_);
-    }
-
+	if (BINARY == 0)
+	{
+		for (typename std::list<Pairs>::iterator it = listData_.begin(); it != listData_.end(); it++)
+		{
+			listBinarySearch(it->min, sortedList_);
+		}
+	}
+	else
+	{
+		size_t jacobshtal = 0;
+		size_t prevJacobshtal = 0;
+		size_t index = 0;
+			
+		listBinarySearch(listData_.begin()->min, sortedList_);
+		while (sortedList_.size() < inputSize)
+		{
+			prevJacobshtal = jacobshtal;
+			jacobshtal = Jacobsthal(prevJacobshtal);
+			
+			if (jacobshtal > listData_.size())
+				jacobshtal = listData_.size() - 1;
+				
+			index = jacobshtal;
+			int element;
+			while (index > prevJacobshtal)
+			{
+				std::list<Pairs>::iterator it = listData_.begin();
+				std::advance(it, index);		
+				element = it->min;
+				listBinarySearch(element, sortedList_);
+				index--;
+			}
+		}
+	}
 	gettimeofday(&listEnd, 0);
     long seconds = listEnd.tv_sec - listBegin.tv_sec;
     long microseconds = listEnd.tv_usec - listBegin.tv_usec;
@@ -175,7 +203,6 @@ void PmergeMe::vectorSorting()
 				jacobshtal = vecData_.size() - 1;
 				
 			index = jacobshtal;
-			
 			while (index > prevJacobshtal)
 			{
 				vecBinarySearch(vecData_[index].min, sortedVec_);
