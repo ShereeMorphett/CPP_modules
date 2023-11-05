@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 14:19:09 by smorphet          #+#    #+#             */
-/*   Updated: 2023/11/03 15:47:37 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/05 16:49:42 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 #include <set>
+#include <algorithm>
 
 template<typename T>
 void print(T contain, const std::string& heading) 
@@ -32,14 +33,15 @@ void PmergeMe::printPairs(T container)
         std::cout << "Min: " << it->min << "	" << "Max: " << it->max << std::endl;
     }
 }
-int Jacobsthal(int n)
+int Jacobsthal(int last)
 {
-    if (n == 0)
-        return 3;
-    if (n == 1)
-        return 1;
-    return Jacobsthal(n - 1) + 2 * Jacobsthal(n - 2);
+    if (last == 0)
+        return 1;  // Special case for the first Jacobsthal number
+    if (last == 1)
+        return 3;  // Special case for the second Jacobsthal number
+    return last + 2 * Jacobsthal(last - 1);
 }
+
 
 void PmergeMe::initValues(std::vector<int>& validatedInput)
 {
@@ -163,26 +165,20 @@ void PmergeMe::vectorSorting()
 		size_t prevJacobshtal = 0;
 		size_t index = 0;
 			
-		std::set<size_t> usedIndices;  // Create a set to keep track of used indices
-		
-		while (sortedVec_.size() != inputSize)
+		vecBinarySearch(vecData_[index].min, sortedVec_);
+		while (sortedVec_.size() < inputSize)
 		{
 			prevJacobshtal = jacobshtal;
 			jacobshtal = Jacobsthal(prevJacobshtal);
 			
-			if (jacobshtal >= vecData_.size())
+			if (jacobshtal > vecData_.size())
 				jacobshtal = vecData_.size() - 1;
-			
+				
 			index = jacobshtal;
 			
-			while (index >= prevJacobshtal)
+			while (index > prevJacobshtal)
 			{
-				// Check if the index has been used before
-				if (usedIndices.find(index) == usedIndices.end())
-				{
-					vecBinarySearch(vecData_[index].min, sortedVec_);
-					usedIndices.insert(index);  // Mark the index as used
-				}
+				vecBinarySearch(vecData_[index].min, sortedVec_);
 				index--;
 			}
 		}
