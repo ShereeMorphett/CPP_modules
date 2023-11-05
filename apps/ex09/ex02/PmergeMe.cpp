@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 14:19:09 by smorphet          #+#    #+#             */
-/*   Updated: 2023/11/05 17:06:48 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/05 17:11:27 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,6 @@ void PmergeMe::initValues(std::vector<int>& validatedInput)
     }
 	listData_.sort();
 	std::sort(vecData_.begin(), vecData_.end());
-	printPairs(listData_);
-	std::cout << std::endl;
-	printPairs(vecData_);
-	std::cout << std::endl;
 }
 
 
@@ -169,7 +165,7 @@ void PmergeMe::listSorting()
     long seconds = listEnd.tv_sec - listBegin.tv_sec;
     long microseconds = listEnd.tv_usec - listBegin.tv_usec;
     double elapsed = seconds + microseconds*1e-6;
-	print(sortedList_, "Sorted List:");
+	//print(sortedList_, "Sorted List:");
 	std::cout << "Time to process a range of " << inputSize << " elements with std::list : " << elapsed << "us\n" << std::endl;
 }
 
