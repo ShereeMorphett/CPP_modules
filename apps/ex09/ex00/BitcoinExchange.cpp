@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 10:55:19 by smorphet          #+#    #+#             */
-/*   Updated: 2023/11/06 10:37:00 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:48:03 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ bool date::operator< (const date& right) const
     {
         if (month == right.month)
         {
-            return day < right.day;
+            return day <= right.day;
         }
         else
             return month < right.month;
@@ -88,7 +88,7 @@ void BitcoinExchange::parseInitData()
 static void printConversion(date &userDate, float value, std::map<date, float> data_)
 {
     std::map<date, float>::iterator it = data_.begin();
-	float convertValue= 0;
+	float convertValue  = 0.0;
 	while (it != data_.end())
 	{
 	    if (it->first < userDate)
@@ -97,8 +97,9 @@ static void printConversion(date &userDate, float value, std::map<date, float> d
             break;
 		it++;
 	}
+	std::cout << convertValue << std::endl;
     float converted =  value * convertValue;
-    std::cout << userDate << " => " << value << " = " <<  converted << std::endl;
+    std::cout << userDate << " => " << std::setprecision(2) << value << " = " <<  converted << std::endl;
 }
 
 static int validate(float value)
@@ -121,7 +122,7 @@ static bool validate(date &userDate)
         leapYear = 1;
     if (userDate.month == 2 && ((!leapYear && userDate.day > 28) || (leapYear && userDate.day > 29)))
         return false;
-    if ((userDate.month == 4 || userDate.month == 6 || userDate.month == 11 ) && userDate.month < 30)	
+    if ((userDate.month == 4 || userDate.month == 6 || userDate.month == 11 ) && userDate.month > 30)
 		return false;
     return true;
 }
