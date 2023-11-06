@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 10:55:19 by smorphet          #+#    #+#             */
-/*   Updated: 2023/11/02 20:39:25 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/06 10:37:00 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,8 @@ void BitcoinExchange::handleInput(std::string fileName)
         try
         {
             std::istringstream ss(line);
+			if (line.empty())
+				throw std::logic_error("Empty Line");
             ss >> userDate >> pipe >> value;
             if (!ss || !ss.eof())
                 throw std::logic_error("Bad input => " + line);

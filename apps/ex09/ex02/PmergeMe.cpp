@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 14:19:09 by smorphet          #+#    #+#             */
-/*   Updated: 2023/11/05 17:11:27 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/06 10:41:27 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void PmergeMe::initValues(std::vector<int>& validatedInput)
 	inputSize = validatedInput.size();
 	gettimeofday(&listBegin, 0);
 	gettimeofday(&vecBegin, 0);
-	for (int index = 0; index < validatedInput.size(); index++)
+	for (size_t index = 0; index < validatedInput.size(); index++)
     {
 		Pairs temp;
 		if (index + 1 < validatedInput.size())
@@ -122,14 +122,14 @@ void PmergeMe::listBinarySearch(int toPlace, std::list<int>& container)
 
 void PmergeMe::listSorting()
 {
-	for (typename std::list<Pairs>::iterator it = listData_.begin(); it != listData_.end(); it++)
+	for (std::list<Pairs>::iterator it = listData_.begin(); it != listData_.end(); it++)
     {
 		if (it->max != EMPTY)
 			sortedList_.push_back(it->max);
     }
 	if (BINARY == 0)
 	{
-		for (typename std::list<Pairs>::iterator it = listData_.begin(); it != listData_.end(); it++)
+		for (std::list<Pairs>::iterator it = listData_.begin(); it != listData_.end(); it++)
 		{
 			listBinarySearch(it->min, sortedList_);
 		}
@@ -171,14 +171,14 @@ void PmergeMe::listSorting()
 
 void PmergeMe::vectorSorting()
 {
-	for (typename std::vector<Pairs>::iterator it = vecData_.begin(); it != vecData_.end(); it++)
+	for (std::vector<Pairs>::iterator it = vecData_.begin(); it != vecData_.end(); it++)
     {
 		if (it->max != EMPTY)
 			sortedVec_.push_back(it->max);
     }
 	if (BINARY == 0)
 	{
-		for (typename std::vector<Pairs>::iterator it = vecData_.begin(); it != vecData_.end(); it++)
+		for (std::vector<Pairs>::iterator it = vecData_.begin(); it != vecData_.end(); it++)
 		{
 			vecBinarySearch(it->min, sortedVec_);
 		}

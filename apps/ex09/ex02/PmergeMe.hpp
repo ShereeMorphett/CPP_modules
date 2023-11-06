@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smorphet <smorphet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 14:19:04 by smorphet          #+#    #+#             */
-/*   Updated: 2023/11/05 17:09:45 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/06 10:41:04 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ struct Pairs
 class PmergeMe
 {
 	private:
-		int inputSize;
+		size_t inputSize;
 		std::list<Pairs> listData_; 
 		std::vector<Pairs> vecData_;
 		std::list<int> sortedList_; 
