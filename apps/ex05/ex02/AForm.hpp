@@ -22,9 +22,7 @@ class AForm
 		bool signed_;
 		const int gradeToSign_;
 		const int gradeToExecute_;
-
-
-	
+		
 	public:	
 		bool getSigned() const;
 		virtual void execute(Bureaucrat const & executor) const = 0;

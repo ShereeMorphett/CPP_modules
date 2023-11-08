@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 10:55:19 by smorphet          #+#    #+#             */
-/*   Updated: 2023/11/06 12:48:03 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:48:06 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,8 @@ static void printConversion(date &userDate, float value, std::map<date, float> d
             break;
 		it++;
 	}
-	std::cout << convertValue << std::endl;
-    float converted =  value * convertValue;
-    std::cout << userDate << " => " << std::setprecision(2) << value << " = " <<  converted << std::endl;
+	std::cout << userDate << " => " << std::fixed << value << " = "<< std::setprecision(2) << value * convertValue << std::endl;
+ 
 }
 
 static int validate(float value)
