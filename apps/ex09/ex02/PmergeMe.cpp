@@ -6,12 +6,11 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 14:19:09 by smorphet          #+#    #+#             */
-/*   Updated: 2023/11/06 10:41:27 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/09 20:52:29 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-#include <set>
 #include <algorithm>
 
 template<typename T>
@@ -72,16 +71,58 @@ void PmergeMe::initValues(std::vector<int>& validatedInput)
 			break;
 		}
     }
-	listData_.sort();
-	std::sort(vecData_.begin(), vecData_.end());
+
+	recursiveMaxSortList(listData_, listData_.begin(), listData_.end());
+	recursiveMaxSort(vecData_, static_cast<size_t>(0), vecData_.size() - 1);
+
+	
+}
+void PmergeMe::recursiveMaxSortList(std::list<Pairs>& listData_, std::list<Pairs>::iterator left, std::list<Pairs>::iterator right)
+{
+
+    if (std::distance(left, right) > 1)
+    {
+        std::list<Pairs>::iterator mid = std::next(left, std::distance(left, right) / 2);
+
+    
+        recursiveMaxSortList(listData_, left, mid);
+        recursiveMaxSortList(listData_, mid, right);
+
+
+        listData_.splice(listData_.end(), listData_, left, right);
+    }
 }
 
 
-void PmergeMe::vecBinarySearch(int toPlace, std::vector<int>& container)
+
+
+
+void PmergeMe::recursiveMaxSort(std::vector<Pairs>& data, size_t left, size_t right)
+{
+    // Base case: If the size of the subarray is 1 or 0, it's already sorted
+    if (left < right)
+    {
+        size_t mid = left + (right - left) / 2;
+
+        recursiveMaxSort(data, left, mid);
+        recursiveMaxSort(data, mid + 1, right);
+
+        std::inplace_merge(data.begin() + left, data.begin() + mid + 1, data.begin() + right + 1, Pairs());
+    }
+}
+
+void PmergeMe::vecBinarySearch(int toPlace, int toPlaceMax ,std::vector<int>& container)
 {
     std::vector<int>::iterator low = container.begin();
-    std::vector<int>::iterator high = container.end();
+    std::vector<int>::iterator high = container.begin();
 	
+	if (toPlaceMax != EMPTY)
+	{
+		while (toPlaceMax >= *high)
+			high++;
+	}
+	else
+		high = container.end();
 	while (low != high)
 	{
         std::vector<int>::iterator mid = low + std::distance(low, high) / 2;
@@ -97,11 +138,19 @@ void PmergeMe::vecBinarySearch(int toPlace, std::vector<int>& container)
     container.insert(low, toPlace);
 }
 
-void PmergeMe::listBinarySearch(int toPlace, std::list<int>& container)
+void PmergeMe::listBinarySearch(int toPlace, int toPlaceMax, std::list<int>& container)
 {
 	std::list<int>::iterator low = container.begin();
-	std::list<int>::iterator high = container.end();
+	std::list<int>::iterator high = container.begin();
 
+	
+	if (toPlaceMax != EMPTY)
+	{
+		while (toPlaceMax >= *high)
+			high++;
+	}
+	else
+		high = container.end();
 	while (low != high)
 	{
 		std::list<int>::iterator mid = low;
@@ -122,7 +171,7 @@ void PmergeMe::listBinarySearch(int toPlace, std::list<int>& container)
 
 void PmergeMe::listSorting()
 {
-	for (std::list<Pairs>::iterator it = listData_.begin(); it != listData_.end(); it++)
+	for (std::list<Pairs>::iterator it = listData_.begin(); it != listData_.end(); it++) //needs to happen recursively
     {
 		if (it->max != EMPTY)
 			sortedList_.push_back(it->max);
@@ -131,7 +180,7 @@ void PmergeMe::listSorting()
 	{
 		for (std::list<Pairs>::iterator it = listData_.begin(); it != listData_.end(); it++)
 		{
-			listBinarySearch(it->min, sortedList_);
+			listBinarySearch(it->min, it->max, sortedList_);
 		}
 	}
 	else
@@ -140,7 +189,7 @@ void PmergeMe::listSorting()
 		size_t prevJacobshtal = 0;
 		size_t index = 0;
 			
-		listBinarySearch(listData_.begin()->min, sortedList_);
+		listBinarySearch(listData_.begin()->min, listData_.begin()->max,  sortedList_);
 		while (sortedList_.size() < inputSize)
 		{
 			prevJacobshtal = jacobshtal;
@@ -156,7 +205,7 @@ void PmergeMe::listSorting()
 				std::list<Pairs>::iterator it = listData_.begin();
 				std::advance(it, index);		
 				element = it->min;
-				listBinarySearch(element, sortedList_);
+				listBinarySearch(element, it->max, sortedList_);
 				index--;
 			}
 		}
@@ -165,12 +214,13 @@ void PmergeMe::listSorting()
     long seconds = listEnd.tv_sec - listBegin.tv_sec;
     long microseconds = listEnd.tv_usec - listBegin.tv_usec;
     double elapsed = seconds + microseconds*1e-6;
-	//print(sortedList_, "Sorted List:");
+	print(sortedList_, "Sorted List:");
 	std::cout << "Time to process a range of " << inputSize << " elements with std::list : " << elapsed << "us\n" << std::endl;
 }
 
 void PmergeMe::vectorSorting()
 {
+	printPairs(vecData_);
 	for (std::vector<Pairs>::iterator it = vecData_.begin(); it != vecData_.end(); it++)
     {
 		if (it->max != EMPTY)
@@ -180,7 +230,7 @@ void PmergeMe::vectorSorting()
 	{
 		for (std::vector<Pairs>::iterator it = vecData_.begin(); it != vecData_.end(); it++)
 		{
-			vecBinarySearch(it->min, sortedVec_);
+			vecBinarySearch(it->min, it->max, sortedVec_);
 		}
 	}
 	else
@@ -189,7 +239,7 @@ void PmergeMe::vectorSorting()
 		size_t prevJacobshtal = 0;
 		size_t index = 0;
 			
-		vecBinarySearch(vecData_[index].min, sortedVec_);
+		vecBinarySearch(vecData_[index].min, vecData_[index].max, sortedVec_);
 		while (sortedVec_.size() < inputSize)
 		{
 			prevJacobshtal = jacobshtal;
@@ -201,7 +251,7 @@ void PmergeMe::vectorSorting()
 			index = jacobshtal;
 			while (index > prevJacobshtal)
 			{
-				vecBinarySearch(vecData_[index].min, sortedVec_);
+				vecBinarySearch(vecData_[index].min, vecData_[index].max, sortedVec_);
 				index--;
 			}
 		}
@@ -212,6 +262,10 @@ void PmergeMe::vectorSorting()
     long microseconds = vecEnd.tv_usec - vecBegin.tv_usec;
     float elapsed = seconds + microseconds*1e-6;
 	std::cout << "Time to process a range of " << inputSize << " elements with std::vector : " << std::fixed << std::setprecision(5) << elapsed << "us\n" << std::endl;
+}
+bool Pairs::operator()(const Pairs& left, const Pairs& right) const
+{
+	return left.max < right.max;
 }
 
 bool Pairs::operator< (const Pairs& right) const

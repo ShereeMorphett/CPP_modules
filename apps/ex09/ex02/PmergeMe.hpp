@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 14:19:04 by smorphet          #+#    #+#             */
-/*   Updated: 2023/11/06 10:41:04 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/09 20:48:12 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ struct Pairs
 	int min;
 	int max;
 	bool operator< (const Pairs& right) const;
+	bool operator() (const Pairs& left, const Pairs& right) const;
+	
 };
 
 class PmergeMe
@@ -53,10 +55,13 @@ class PmergeMe
 				
 	public:
 
-		void vecBinarySearch(int toPlace, std::vector<int>& container);
-		void listBinarySearch(int toPlace, std::list<int>& container);
+		void vecBinarySearch(int toPlace, int toPlaceMax ,std::vector<int>& container);
+		void listBinarySearch(int toPlace, int toPlaceMax, std::list<int>& container);
 		void listSorting();
 		void vectorSorting();
+		void recursiveMaxSort(std::vector<Pairs>& data, size_t left, size_t right);
+		void recursiveMaxSortList(std::list<Pairs>& listData_, std::list<Pairs>::iterator left, std::list<Pairs>::iterator right);
+	
 		template<typename T>
 		void printPairs(T container);
 		void initValues(std::vector<int>& validatedInput);
