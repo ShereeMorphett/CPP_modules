@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 14:19:04 by smorphet          #+#    #+#             */
-/*   Updated: 2023/11/09 20:48:12 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/10 16:42:02 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ class PmergeMe
 		void listSorting();
 		void vectorSorting();
 		void recursiveMaxSort(std::vector<Pairs>& data, size_t left, size_t right);
-		void recursiveMaxSortList(std::list<Pairs>& listData_, std::list<Pairs>::iterator left, std::list<Pairs>::iterator right);
+		void insertionSortRecursive(std::list<Pairs>& arr);
 	
 		template<typename T>
 		void printPairs(T container);

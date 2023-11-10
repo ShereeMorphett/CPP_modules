@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 14:19:09 by smorphet          #+#    #+#             */
-/*   Updated: 2023/11/09 20:52:29 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/10 16:56:46 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,41 +72,42 @@ void PmergeMe::initValues(std::vector<int>& validatedInput)
 		}
     }
 
-	recursiveMaxSortList(listData_, listData_.begin(), listData_.end());
+	insertionSortRecursive(listData_);
+	std::cout << "list pairs" << std::endl;
+	printPairs(listData_);
 	recursiveMaxSort(vecData_, static_cast<size_t>(0), vecData_.size() - 1);
-
-	
 }
-void PmergeMe::recursiveMaxSortList(std::list<Pairs>& listData_, std::list<Pairs>::iterator left, std::list<Pairs>::iterator right)
+
+
+void PmergeMe::insertionSortRecursive(std::list<Pairs>& arr)
 {
+    if (arr.size() <= 1)
+        return;
 
-    if (std::distance(left, right) > 1)
-    {
-        std::list<Pairs>::iterator mid = std::next(left, std::distance(left, right) / 2);
+    Pairs last = arr.back();
+    arr.pop_back();
 
-    
-        recursiveMaxSortList(listData_, left, mid);
-        recursiveMaxSortList(listData_, mid, right);
-
-
-        listData_.splice(listData_.end(), listData_, left, right);
+    insertionSortRecursive(arr);
+    auto it = arr.end();
+    while (it != arr.begin() && (std::prev(it)->max) > last.max)
+	{
+        it = std::prev(it);
     }
-}
 
+    arr.insert(it, last);
+}
 
 
 
 
 void PmergeMe::recursiveMaxSort(std::vector<Pairs>& data, size_t left, size_t right)
 {
-    // Base case: If the size of the subarray is 1 or 0, it's already sorted
     if (left < right)
     {
         size_t mid = left + (right - left) / 2;
 
         recursiveMaxSort(data, left, mid);
         recursiveMaxSort(data, mid + 1, right);
-
         std::inplace_merge(data.begin() + left, data.begin() + mid + 1, data.begin() + right + 1, Pairs());
     }
 }
@@ -142,11 +143,10 @@ void PmergeMe::listBinarySearch(int toPlace, int toPlaceMax, std::list<int>& con
 {
 	std::list<int>::iterator low = container.begin();
 	std::list<int>::iterator high = container.begin();
-
 	
 	if (toPlaceMax != EMPTY)
 	{
-		while (toPlaceMax >= *high)
+		while (toPlaceMax > *high)
 			high++;
 	}
 	else
@@ -176,6 +176,7 @@ void PmergeMe::listSorting()
 		if (it->max != EMPTY)
 			sortedList_.push_back(it->max);
     }
+
 	if (BINARY == 0)
 	{
 		for (std::list<Pairs>::iterator it = listData_.begin(); it != listData_.end(); it++)
@@ -214,13 +215,12 @@ void PmergeMe::listSorting()
     long seconds = listEnd.tv_sec - listBegin.tv_sec;
     long microseconds = listEnd.tv_usec - listBegin.tv_usec;
     double elapsed = seconds + microseconds*1e-6;
-	print(sortedList_, "Sorted List:");
+	print(sortedList_, "After:");
 	std::cout << "Time to process a range of " << inputSize << " elements with std::list : " << elapsed << "us\n" << std::endl;
 }
 
 void PmergeMe::vectorSorting()
 {
-	printPairs(vecData_);
 	for (std::vector<Pairs>::iterator it = vecData_.begin(); it != vecData_.end(); it++)
     {
 		if (it->max != EMPTY)
