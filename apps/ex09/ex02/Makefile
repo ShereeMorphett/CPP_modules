@@ -6,7 +6,7 @@
 #    By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/18 08:53:50 by smorphet          #+#    #+#              #
-#    Updated: 2023/11/03 15:48:12 by smorphet         ###   ########.fr        #
+#    Updated: 2023/11/15 14:06:04 by smorphet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ OBJ	=  $(SRC:.cpp=.o)
 INC = PmergeMe.hpp Color.hpp
 
 CC		= c++
-FLAGS	= -Wall -Wextra -Werror -std=c++98 -fsanitize=address
+FLAGS	= -Wall -Wextra -Werror -std=c++98 -g # -fsanitize=address
 
 
 all: $(NAME) $(NAME)

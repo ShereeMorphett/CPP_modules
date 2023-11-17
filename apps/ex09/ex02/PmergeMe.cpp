@@ -6,7 +6,7 @@
 /*   By: smorphet <smorphet@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 14:19:09 by smorphet          #+#    #+#             */
-/*   Updated: 2023/11/10 16:56:46 by smorphet         ###   ########.fr       */
+/*   Updated: 2023/11/15 14:27:55 by smorphet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,7 @@ void PmergeMe::initValues(std::vector<int>& validatedInput)
     }
 
 	insertionSortRecursive(listData_);
-	std::cout << "list pairs" << std::endl;
-	printPairs(listData_);
+	//printPairs(listData_);
 	recursiveMaxSort(vecData_, static_cast<size_t>(0), vecData_.size() - 1);
 }
 
@@ -88,7 +87,8 @@ void PmergeMe::insertionSortRecursive(std::list<Pairs>& arr)
     arr.pop_back();
 
     insertionSortRecursive(arr);
-    auto it = arr.end();
+	
+    std::list<Pairs>::iterator it = arr.end();
     while (it != arr.begin() && (std::prev(it)->max) > last.max)
 	{
         it = std::prev(it);
@@ -112,32 +112,47 @@ void PmergeMe::recursiveMaxSort(std::vector<Pairs>& data, size_t left, size_t ri
     }
 }
 
-void PmergeMe::vecBinarySearch(int toPlace, int toPlaceMax ,std::vector<int>& container)
+
+void PmergeMe::vecBinarySearch(int toPlace, int toPlaceMax, std::vector<int>& container)
 {
+    if (container.empty())
+    {
+        container.push_back(toPlace);
+        return;
+    }
+
     std::vector<int>::iterator low = container.begin();
     std::vector<int>::iterator high = container.begin();
-	
-	if (toPlaceMax != EMPTY)
-	{
-		while (toPlaceMax >= *high)
-			high++;
-	}
-	else
-		high = container.end();
-	while (low != high)
-	{
+
+    if (toPlaceMax != EMPTY)
+    {
+        while (toPlaceMax >= *high)
+        {
+            ++high;
+            if (high == container.end())
+                break;
+        }
+    }
+    else
+    {
+        high = container.end();
+    }
+
+    while (low != high)
+    {
         std::vector<int>::iterator mid = low + std::distance(low, high) / 2;
-        if (toPlace < *mid) 
-		{
+        if (toPlace < *mid)
+        {
             high = mid;
-        } 
-		else 
-		{
+        }
+        else
+        {
             low = mid + 1;
         }
     }
     container.insert(low, toPlace);
 }
+
 
 void PmergeMe::listBinarySearch(int toPlace, int toPlaceMax, std::list<int>& container)
 {
@@ -245,17 +260,18 @@ void PmergeMe::vectorSorting()
 			prevJacobshtal = jacobshtal;
 			jacobshtal = Jacobsthal(prevJacobshtal);
 			
-			if (jacobshtal > vecData_.size())
+			if (jacobshtal >= vecData_.size())
 				jacobshtal = vecData_.size() - 1;
 				
 			index = jacobshtal;
-			while (index > prevJacobshtal)
+			while (index > prevJacobshtal && index >= 0)
 			{
 				vecBinarySearch(vecData_[index].min, vecData_[index].max, sortedVec_);
 				index--;
 			}
 		}
 	}
+
 	print(sortedVec_, "\n\nAfter:");
 	gettimeofday(&vecEnd, 0);
     long seconds = vecEnd.tv_sec - vecBegin.tv_sec;
@@ -275,7 +291,6 @@ bool Pairs::operator< (const Pairs& right) const
 
 
 ///basic constructors etc///
-
 PmergeMe &PmergeMe::operator=(PmergeMe const & right)
 {
 	if(this != &right)
